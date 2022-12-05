@@ -36,7 +36,7 @@ public class GUI extends javax.swing.JFrame {
         txtResult = new javax.swing.JTextArea();
         btnOpen = new javax.swing.JButton();
         btnLexical = new javax.swing.JButton();
-        btnParser = new javax.swing.JButton();
+        btnSyntax = new javax.swing.JButton();
         btnClean = new javax.swing.JButton();
         btnSemantic = new javax.swing.JButton();
 
@@ -70,8 +70,13 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        btnParser.setText("Parser");
-        btnParser.setEnabled(false);
+        btnSyntax.setText("Syntax");
+        btnSyntax.setEnabled(false);
+        btnSyntax.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSyntaxActionPerformed(evt);
+            }
+        });
 
         btnClean.setText("Clean");
         btnClean.addActionListener(new java.awt.event.ActionListener() {
@@ -91,11 +96,10 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSemantic, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnClean, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnOpen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLexical, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                        .addComponent(btnParser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnClean, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnOpen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLexical, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                    .addComponent(btnSyntax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtInput)
@@ -116,7 +120,7 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnLexical, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addComponent(btnParser, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnSyntax, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSemantic, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                 .addGap(24, 24, 24)
@@ -149,7 +153,7 @@ public class GUI extends javax.swing.JFrame {
                 output += tokens +" ";
             }
         SetResultTextView(output);
-        btnParser.setEnabled(true);
+        btnSyntax.setEnabled(true);
     }//GEN-LAST:event_btnLexicalActionPerformed
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
@@ -157,6 +161,16 @@ public class GUI extends javax.swing.JFrame {
         CleanButton();
         txtInput.setText("");
     }//GEN-LAST:event_btnCleanActionPerformed
+
+    private void btnSyntaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSyntaxActionPerformed
+       boolean isSyntaxValid= inputManager.SyntaxAnalysis();
+       if(!isSyntaxValid){
+           SetResultTextView("Syntax is not valid!!");
+           return;
+       }
+       SetResultTextView("Syntax is valid!!");
+       btnSemantic.setEnabled(true);
+    }//GEN-LAST:event_btnSyntaxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,7 +213,7 @@ public class GUI extends javax.swing.JFrame {
     }
     void CleanButton(){
         btnLexical.setEnabled(false);
-        btnParser.setEnabled(false);
+        btnSyntax.setEnabled(false);
         btnSemantic.setEnabled(false);
     }
     
@@ -207,8 +221,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btnClean;
     private javax.swing.JButton btnLexical;
     private javax.swing.JButton btnOpen;
-    private javax.swing.JButton btnParser;
     private javax.swing.JButton btnSemantic;
+    private javax.swing.JButton btnSyntax;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtInput;
     private javax.swing.JTextArea txtResult;

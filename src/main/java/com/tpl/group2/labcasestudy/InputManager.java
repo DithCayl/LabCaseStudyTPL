@@ -20,7 +20,7 @@ public class InputManager {
     List<String> tokenList = new ArrayList<String>();
     
     boolean isFileOpen = false;
-    
+    boolean isSyntaxValid = false;
     
     String inputRegExPattern = "(\".+\\s*.*\")|;|=|(\\w+)";
     public InputManager(String input){
@@ -36,8 +36,14 @@ public class InputManager {
         if(!isFileOpen)return;
         tokenList = new LexicalAnalyzer().GetTokenList(inputSorted);
     }
+    public boolean SyntaxAnalysis(){
+        boolean isSyntaxEqual =  new SyntaxAnalyzer().IsPatternEqual(tokenList);
+        isSyntaxValid = isSyntaxEqual;
+        return isSyntaxEqual;
+    }
     
     public List<String> GetTokenList(){
         return tokenList;
     }
+    
 }
