@@ -87,6 +87,11 @@ public class GUI extends javax.swing.JFrame {
 
         btnSemantic.setText("Semantic");
         btnSemantic.setEnabled(false);
+        btnSemantic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSemanticActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -153,6 +158,7 @@ public class GUI extends javax.swing.JFrame {
                 output += tokens +" ";
             }
         SetResultTextView(output);
+        //SetResultTextView(" "+inputManager.dataString+" "+inputManager.valueString);
         btnSyntax.setEnabled(true);
     }//GEN-LAST:event_btnLexicalActionPerformed
 
@@ -171,6 +177,15 @@ public class GUI extends javax.swing.JFrame {
        SetResultTextView("Syntax is valid!!");
        btnSemantic.setEnabled(true);
     }//GEN-LAST:event_btnSyntaxActionPerformed
+
+    private void btnSemanticActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSemanticActionPerformed
+       boolean isSemanticValid= inputManager.SemanticAnalysis();
+       if(!isSemanticValid){
+           SetResultTextView("Semantic is not valid!!");
+           return;
+       }
+       SetResultTextView("Semantic is valid!!");
+    }//GEN-LAST:event_btnSemanticActionPerformed
 
     /**
      * @param args the command line arguments

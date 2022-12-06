@@ -16,6 +16,8 @@ import java.util.regex.Pattern;
 public class InputManager {
     
     String input;
+    String dataString;
+    String valueString;
     List<String> inputSorted = new ArrayList<String>();
     List<String> tokenList = new ArrayList<String>();
     
@@ -34,16 +36,26 @@ public class InputManager {
     }
     public void LexicalAnalysis(){
         if(!isFileOpen)return;
-        tokenList = new LexicalAnalyzer().GetTokenList(inputSorted);
+        LexicalAnalyzer lexicalAnalyzer =  new LexicalAnalyzer();
+        
+        tokenList = lexicalAnalyzer.GetTokenList(inputSorted);
+        dataString = lexicalAnalyzer.GetDataString();
+        valueString = lexicalAnalyzer.GetValueString();
     }
     public boolean SyntaxAnalysis(){
         boolean isSyntaxEqual =  new SyntaxAnalyzer().IsPatternEqual(tokenList);
         isSyntaxValid = isSyntaxEqual;
         return isSyntaxEqual;
     }
-    
+    public boolean SemanticAnalysis(){
+        boolean isSemanticValid = new SemanticAnalyzer().IsTypeMatched(dataString,valueString);
+        return isSemanticValid;
+    }
     public List<String> GetTokenList(){
         return tokenList;
     }
     
+}
+enum DataType{
+     StringType,charType,intType,doubleType
 }

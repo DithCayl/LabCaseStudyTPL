@@ -15,12 +15,16 @@ import java.util.regex.Pattern;
 public class LexicalAnalyzer {
     
      List<String> tokenList = new ArrayList<String>();
+     
+     String dataString;
+     String valueString;
     
      public List<String> GetTokenList(List<String> input){
          
        for(String lexeme: input){
             if(IsDataType(lexeme)){
                 tokenList.add("<data_type>");
+                dataString = lexeme;
                 continue;
             }
             if(IsIdentifier(lexeme)){
@@ -29,6 +33,7 @@ public class LexicalAnalyzer {
             }
             if(IsValueType(lexeme)){
                 tokenList.add("<value>");
+                valueString = lexeme;
                 continue;
             }
             if(lexeme.equals("=")){
@@ -36,7 +41,7 @@ public class LexicalAnalyzer {
                 continue;
             }
             if(lexeme.equals(";")){
-                    tokenList.add("<delimiter>");
+                tokenList.add("<delimiter>");
             }
         }
         return tokenList;
@@ -58,5 +63,11 @@ public class LexicalAnalyzer {
                   "(\'.\')";                   //char
           boolean bool = Pattern.matches(regExPattern,input);
           return bool;
+      }
+      public String GetDataString(){
+          return dataString;
+      }
+      public String GetValueString(){
+          return valueString;
       }
 }
