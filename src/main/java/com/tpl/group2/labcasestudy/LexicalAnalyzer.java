@@ -14,10 +14,11 @@ import java.util.regex.Pattern;
  */
 public class LexicalAnalyzer {
     
-     List<String> tokenList = new ArrayList<String>();
+     List<String> tokenList = new ArrayList();
      
      String dataString;
-     String valueString;
+     List<String> valueList = new ArrayList();
+     List<String> arithOpList = new ArrayList();
     
      public List<String> GetTokenList(List<String> input){
          
@@ -33,11 +34,16 @@ public class LexicalAnalyzer {
             }
             if(IsValueType(lexeme)){
                 tokenList.add("<value>");
-                valueString = lexeme;
+                valueList.add(lexeme);
                 continue;
             }
             if(lexeme.equals("=")){
                 tokenList.add("<assignment_operator>");
+                continue;
+            }
+            if(IsArithmeticOp(lexeme)){
+                tokenList.add("<arithmetic_operator>");
+                arithOpList.add(lexeme);
                 continue;
             }
             if(lexeme.equals(";")){
@@ -64,10 +70,18 @@ public class LexicalAnalyzer {
           boolean bool = Pattern.matches(regExPattern,input);
           return bool;
       }
+      public boolean IsArithmeticOp(String input){
+          String regExPattern ="\\+|\\-|\\*|\\/|%";                  //char
+          boolean bool = Pattern.matches(regExPattern,input);
+          return bool;
+      }
       public String GetDataString(){
           return dataString;
       }
-      public String GetValueString(){
-          return valueString;
+      public List<String> GetValueList(){
+          return valueList;
+      }
+      public List<String> GetArithOpList(){
+          return arithOpList;
       }
 }

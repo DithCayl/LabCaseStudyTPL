@@ -4,6 +4,7 @@
  */
 package com.tpl.group2.labcasestudy;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,7 +29,7 @@ public class SemanticAnalyzer {
                 return null;
         }
     }
-    public boolean IsTypeMatched(String dataString, String valueString){
+    public boolean IsTypeMatched(String dataString, List<String> valueList){
         String charPatternValue ="((\'.{1}\'))";
         String stringPatternValue ="(\".*\")";
         String intPatternValue ="(-|\\+)?\\d+";
@@ -52,7 +53,10 @@ public class SemanticAnalyzer {
                 regExValue = null;
         }
         if(regExValue==null)return false;
-        Matcher matcher = Pattern.compile(regExValue).matcher(valueString);
-        return matcher.matches();
+        for(String value: valueList){
+            Matcher matcher = Pattern.compile(regExValue).matcher(value);
+            if(!matcher.matches())return false;
+        }
+        return true;
     }
 }

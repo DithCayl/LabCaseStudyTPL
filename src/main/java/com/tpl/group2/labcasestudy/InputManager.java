@@ -17,14 +17,16 @@ public class InputManager {
     
     String input;
     String dataString;
-    String valueString;
-    List<String> inputSorted = new ArrayList<String>();
-    List<String> tokenList = new ArrayList<String>();
+    List<String> valueList = new ArrayList();
+    List<String> arithOpList = new ArrayList();
+    List<String> inputSorted = new ArrayList();
+    List<String> tokenList = new ArrayList();
     
     boolean isFileOpen = false;
     boolean isSyntaxValid = false;
     
-    String inputRegExPattern = "(\".+\\s*.*\")|;|=|(\\w+)";
+    String inputRegExPattern = "(\".+\\s*.*\")|\\+|\\-|\\*|\\/|%|"
+            + ";|=|(\\w+)";
     public InputManager(String input){
         this.input = input;
         Matcher matcher = Pattern.compile(inputRegExPattern).matcher(input);
@@ -40,7 +42,8 @@ public class InputManager {
         
         tokenList = lexicalAnalyzer.GetTokenList(inputSorted);
         dataString = lexicalAnalyzer.GetDataString();
-        valueString = lexicalAnalyzer.GetValueString();
+        valueList = lexicalAnalyzer.GetValueList();
+        arithOpList = lexicalAnalyzer.GetArithOpList();
     }
     public boolean SyntaxAnalysis(){
         boolean isSyntaxEqual =  new SyntaxAnalyzer().IsPatternEqual(tokenList);
@@ -48,7 +51,7 @@ public class InputManager {
         return isSyntaxEqual;
     }
     public boolean SemanticAnalysis(){
-        boolean isSemanticValid = new SemanticAnalyzer().IsTypeMatched(dataString,valueString);
+        boolean isSemanticValid = new SemanticAnalyzer().IsTypeMatched(dataString,valueList);
         return isSemanticValid;
     }
     public List<String> GetTokenList(){
