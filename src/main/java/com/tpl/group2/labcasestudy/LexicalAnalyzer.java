@@ -64,9 +64,8 @@ public class LexicalAnalyzer {
       }
       public boolean IsValueType(String input){
           String regExPattern = "(-*\\d+)|" +   //int
-                  "(-*\\d+\\.*\\d*)|" +         //double
-                  "(\".+\")|" +                 //String
-                  "(\'.\')";                   //char
+                  "(-*\\d*\\.*\\d*)|" +         //double
+                  "([\\\"\\'].+[\\\"\\'])";     //char
           boolean bool = Pattern.matches(regExPattern,input);
           return bool;
       }

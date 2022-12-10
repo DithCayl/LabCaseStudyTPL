@@ -15,48 +15,63 @@ import java.util.regex.Pattern;
  */
 public class InputManager {
     
-    String input;
     String dataString;
-    List<String> valueList = new ArrayList();
-    List<String> arithOpList = new ArrayList();
-    List<String> inputSorted = new ArrayList();
-    List<String> tokenList = new ArrayList();
-    
+    List<String> inputList = new ArrayList();
+    List<InputObject> inputObjectList = new ArrayList();
     boolean isFileOpen = false;
-    boolean isSyntaxValid = false;
     
-    String inputRegExPattern = "(\".+\\s*.*\")|\\+|\\-|\\*|\\/|%|"
-            + ";|=|(\\w+)";
-    public InputManager(String input){
-        this.input = input;
-        Matcher matcher = Pattern.compile(inputRegExPattern).matcher(input);
+    String inputRegExPattern = "[\\\"\\'](?:\\\\.|[^\\\\])*?[\\\"\\']|(?<!\\d)[\\+\\-]?\\.*\\w+\\.*\\w*|[\\+\\-\\*\\/\\;\\=]";
 
-        while(matcher.find()){
-            inputSorted.add(matcher.group());
+    public InputManager(List<String> inputList){
+        this.inputList = inputList;
+        for(String input: inputList){
+            List<String> inputSorted = new ArrayList();
+            Matcher matcher = Pattern.compile(inputRegExPattern).matcher(input);
+            while(matcher.find()){
+                inputSorted.add(matcher.group());
+            }
+            inputObjectList.add(new InputObject(input,inputSorted));
         }
+        
         isFileOpen = true;
     }
     public void LexicalAnalysis(){
-        if(!isFileOpen)return;
-        LexicalAnalyzer lexicalAnalyzer =  new LexicalAnalyzer();
-        
-        tokenList = lexicalAnalyzer.GetTokenList(inputSorted);
-        dataString = lexicalAnalyzer.GetDataString();
-        valueList = lexicalAnalyzer.GetValueList();
-        arithOpList = lexicalAnalyzer.GetArithOpList();
+        for(InputObject input: inputObjectList){
+            LexicalAnalyzer lexicalAnalyzer =  new LexicalAnalyzer();
+            input.setTokenList(lexicalAnalyzer.GetTokenList(input.getSortedInput()));
+            input.setDataString(lexicalAnalyzer.GetDataString());
+            input.setValueList(lexicalAnalyzer.GetValueList());
+            System.out.println(input.getInput());
+        }
     }
-    public boolean SyntaxAnalysis(){
+    /*public boolean SyntaxAnalysis(){
         boolean isSyntaxEqual =  new SyntaxAnalyzer().IsPatternEqual(tokenList);
-        isSyntaxValid = isSyntaxEqual;
         return isSyntaxEqual;
+    }*/
+    public List<Boolean> SyntaxAnalysis(){
+        List<Boolean> syntaxList = new ArrayList<Boolean>();
+        for(InputObject input: inputObjectList){
+            boolean isSyntaxEqual =  new SyntaxAnalyzer().IsPatternEqual(input.getTokenList());
+            syntaxList.add(isSyntaxEqual);
+        }
+        return syntaxList;
     }
-    public boolean SemanticAnalysis(){
+    /*public boolean SemanticAnalysis(){
         boolean isSemanticValid = new SemanticAnalyzer().IsTypeMatched(dataString,valueList);
         return isSemanticValid;
+    }*/
+    public List<Boolean> SemanticAnalysis(){
+        List<Boolean> semanticList = new ArrayList();
+        for(InputObject input: inputObjectList){
+            boolean isSemanticValid = new SemanticAnalyzer().IsTypeMatched(input);
+            semanticList.add(isSemanticValid);
+        }
+        return semanticList;
     }
-    public List<String> GetTokenList(){
-        return tokenList;
+    public List<InputObject> getInputObjectList() {
+        return inputObjectList;
     }
+
     
 }
 enum DataType{

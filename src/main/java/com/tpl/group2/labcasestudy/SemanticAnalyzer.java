@@ -29,13 +29,14 @@ public class SemanticAnalyzer {
                 return null;
         }
     }
-    public boolean IsTypeMatched(String dataString, List<String> valueList){
+    public boolean IsTypeMatched(InputObject inputObj){
         String charPatternValue ="((\'.{1}\'))";
         String stringPatternValue ="(\".*\")";
         String intPatternValue ="(-|\\+)?\\d+";
         String doublePatternValue ="((-|\\+)?((\\d+)|(\\d+\\.*\\d*)|(\\d*\\.*\\d+)))";
         String regExValue;
-
+        
+        String dataString = inputObj.getDataString();
         switch(GetDataType(dataString)){
             case StringType:
                 regExValue = stringPatternValue;
@@ -53,7 +54,7 @@ public class SemanticAnalyzer {
                 regExValue = null;
         }
         if(regExValue==null)return false;
-        for(String value: valueList){
+        for(String value: inputObj.getValueList()){
             Matcher matcher = Pattern.compile(regExValue).matcher(value);
             if(!matcher.matches())return false;
         }
