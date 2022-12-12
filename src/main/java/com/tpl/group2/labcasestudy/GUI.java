@@ -4,12 +4,16 @@
  */
 package com.tpl.group2.labcasestudy;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
+import javax.swing.border.EmptyBorder;
+import materials.TextLineNumber;
 /**
  *
  * @author USER
@@ -21,12 +25,19 @@ public class GUI extends javax.swing.JFrame {
     List<String> inputList = new ArrayList();
 
     InputManager inputManager;
+    //rgba(10,25,47,255)
+    Color primaryColor = new Color(10,25,47,255);
+    //rgba(23,42,70,255)
+    Color secondaryColor = new Color(23,42,70,255);
+    Color textPrimaryColor = new Color(255,255,255,255);
+    Color textSecondaryColor = new Color(200,200,200,255);
 
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
+        MainVirtual();
     }
 
     /**
@@ -38,33 +49,152 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        panelMain = new javax.swing.JPanel();
+        txtInputTitle = new javax.swing.JTextField();
+        scrPaneInput = new javax.swing.JScrollPane();
+        txtInput = new javax.swing.JTextArea();
+        txtResultTitle = new javax.swing.JTextField();
+        scrPaneResult = new javax.swing.JScrollPane();
         txtResult = new javax.swing.JTextArea();
-        btnOpen = new javax.swing.JButton();
+        panelRight = new javax.swing.JPanel();
+        jTextField3 = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jTextField4 = new javax.swing.JTextField();
         btnLexical = new javax.swing.JButton();
         btnSyntax = new javax.swing.JButton();
-        btnClean = new javax.swing.JButton();
         btnSemantic = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtInput = new javax.swing.JTextArea();
+        panelLeft = new javax.swing.JPanel();
+        btnOpen = new javax.swing.JButton();
+        btnClean = new javax.swing.JButton();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
+        setBackground(getPrimaryColor());
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setSize(new java.awt.Dimension(32, 32));
 
-        txtResult.setEditable(false);
-        txtResult.setColumns(20);
-        txtResult.setRows(5);
-        txtResult.setText("Result: ");
-        jScrollPane1.setViewportView(txtResult);
+        panelMain.setBackground(getPrimaryColor());
 
-        btnOpen.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Desktop\\me files\\dokumentikos\\thirdyer\\Theory of Programming Languages\\icons\\add 32.png")); // NOI18N
-        btnOpen.setBorder(null);
-        btnOpen.addActionListener(new java.awt.event.ActionListener() {
+        txtInputTitle.setBackground(getSecondaryColor());
+        txtInputTitle.setForeground(getTextPrimaryColor());
+        txtInputTitle.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtInputTitle.setText("Text.txt");
+        txtInputTitle.setAlignmentX(1.0F);
+        txtInputTitle.setBorder(null);
+        txtInputTitle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOpenActionPerformed(evt);
+                txtInputTitleActionPerformed(evt);
             }
         });
 
+        scrPaneInput.setBackground(new java.awt.Color(0, 0, 0));
+        scrPaneInput.setBorder(null);
+
+        txtInput.setBackground(getSecondaryColor());
+        txtInput.setColumns(20);
+        txtInput.setForeground(getTextPrimaryColor());
+        txtInput.setLineWrap(true);
+        txtInput.setRows(5);
+        txtInput.setText("int i =10;\nString watashi = \"uwu\";\nchar c = 'c';");
+        txtInput.setBorder(null);
+        txtInput.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtInput.setMargin(new java.awt.Insets(2, 20, 2, 20));
+        scrPaneInput.setViewportView(txtInput);
+
+        txtResultTitle.setBackground(getSecondaryColor());
+        txtResultTitle.setForeground(getTextPrimaryColor());
+        txtResultTitle.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtResultTitle.setText("Result");
+        txtResultTitle.setBorder(null);
+        txtResultTitle.setMargin(new java.awt.Insets(0, 6, 0, 6));
+        txtResultTitle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtResultTitleActionPerformed(evt);
+            }
+        });
+
+        scrPaneResult.setBorder(null);
+
+        txtResult.setEditable(false);
+        txtResult.setBackground(getSecondaryColor());
+        txtResult.setColumns(20);
+        txtResult.setForeground(getTextPrimaryColor());
+        txtResult.setRows(5);
+        txtResult.setText("<data_type><identifier>");
+        txtResult.setBorder(null);
+        txtResult.setMargin(new java.awt.Insets(0, 6, 0, 6));
+        scrPaneResult.setViewportView(txtResult);
+
+        javax.swing.GroupLayout panelMainLayout = new javax.swing.GroupLayout(panelMain);
+        panelMain.setLayout(panelMainLayout);
+        panelMainLayout.setHorizontalGroup(
+            panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMainLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMainLayout.createSequentialGroup()
+                        .addComponent(txtInputTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(scrPaneInput, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+                    .addComponent(scrPaneResult))
+                .addContainerGap())
+            .addComponent(txtResultTitle)
+        );
+        panelMainLayout.setVerticalGroup(
+            panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMainLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtInputTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(scrPaneInput, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtResultTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(scrPaneResult, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        panelRight.setBackground(getPrimaryColor());
+
+        jTextField3.setBackground(getSecondaryColor());
+        jTextField3.setForeground(getTextPrimaryColor());
+        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField3.setText("Note");
+        jTextField3.setBorder(null);
+
+        jScrollPane3.setBorder(null);
+
+        jTextArea1.setBackground(getSecondaryColor());
+        jTextArea1.setColumns(20);
+        jTextArea1.setForeground(getTextPrimaryColor());
+        jTextArea1.setRows(5);
+        jTextArea1.setBorder(null);
+        jScrollPane3.setViewportView(jTextArea1);
+
+        jTextField4.setBackground(getSecondaryColor());
+        jTextField4.setForeground(getTextPrimaryColor());
+        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField4.setText("Actions");
+        jTextField4.setBorder(null);
+
+        btnLexical.setBackground(getSecondaryColor());
+        btnLexical.setForeground(getTextPrimaryColor());
         btnLexical.setText("Lexical");
+        btnLexical.setBorder(null);
+        btnLexical.setBorderPainted(false);
         btnLexical.setEnabled(false);
         btnLexical.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +202,10 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        btnSyntax.setBackground(getSecondaryColor());
+        btnSyntax.setForeground(getTextPrimaryColor());
         btnSyntax.setText("Syntax");
+        btnSyntax.setBorder(null);
         btnSyntax.setEnabled(false);
         btnSyntax.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,16 +213,10 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        btnClean.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Desktop\\me files\\dokumentikos\\thirdyer\\Theory of Programming Languages\\icons\\clean 32.png")); // NOI18N
-        btnClean.setBorder(null);
-        btnClean.setPreferredSize(new java.awt.Dimension(64, 64));
-        btnClean.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCleanActionPerformed(evt);
-            }
-        });
-
+        btnSemantic.setBackground(getSecondaryColor());
+        btnSemantic.setForeground(getTextPrimaryColor());
         btnSemantic.setText("Semantic");
+        btnSemantic.setBorder(null);
         btnSemantic.setEnabled(false);
         btnSemantic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,63 +224,132 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        txtInput.setColumns(20);
-        txtInput.setRows(5);
-        jScrollPane2.setViewportView(txtInput);
+        javax.swing.GroupLayout panelRightLayout = new javax.swing.GroupLayout(panelRight);
+        panelRight.setLayout(panelRightLayout);
+        panelRightLayout.setHorizontalGroup(
+            panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRightLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField3)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                    .addComponent(jTextField4)
+                    .addComponent(btnLexical, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSyntax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSemantic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        panelRightLayout.setVerticalGroup(
+            panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRightLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnLexical, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSyntax, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSemantic, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
+        );
+
+        panelLeft.setBackground(getPrimaryColor());
+
+        btnOpen.setBackground(getSecondaryColor());
+        btnOpen.setForeground(getTextPrimaryColor());
+        btnOpen.setText("Add");
+        btnOpen.setBorder(null);
+        btnOpen.setBorderPainted(false);
+        btnOpen.setPreferredSize(new java.awt.Dimension(32, 32));
+        btnOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpenActionPerformed(evt);
+            }
+        });
+
+        btnClean.setBackground(getSecondaryColor());
+        btnClean.setForeground(getTextPrimaryColor());
+        btnClean.setText("Clear");
+        btnClean.setBorder(null);
+        btnClean.setBorderPainted(false);
+        btnClean.setPreferredSize(new java.awt.Dimension(64, 64));
+        btnClean.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCleanActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelLeftLayout = new javax.swing.GroupLayout(panelLeft);
+        panelLeft.setLayout(panelLeftLayout);
+        panelLeftLayout.setHorizontalGroup(
+            panelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLeftLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(btnClean, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
+            .addGroup(panelLeftLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+        panelLeftLayout.setVerticalGroup(
+            panelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLeftLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(btnLexical, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSyntax, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSemantic, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(31, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(panelLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLexical, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSyntax, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSemantic, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    void MainVirtual(){
+        TextLineNumber tln = new TextLineNumber(txtInput);
+        tln.setBackground(secondaryColor);
+        tln.setForeground(textPrimaryColor);
+        tln.setBorder(null);
+        
+        tln.setDigitAlignment(CENTER_ALIGNMENT);
+        tln.setCurrentLineForeground(textSecondaryColor);
+        scrPaneInput.setRowHeaderView(tln);
+        //scrPaneInput.getRowHeader().setBackground(Color.red);
+        getContentPane().setBackground( primaryColor);
 
+    }
     private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
         // TODO add your handling code here:
         CleanButton();
-        String path = System.getProperty("user.home") + "/Desktop/Input1.txt";;
+        String path = System.getProperty("user.home") + "/Desktop/Input1.txt";
         JFileChooser chooser = new JFileChooser(path);
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
@@ -228,6 +424,14 @@ public class GUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnSemanticActionPerformed
 
+    private void txtInputTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInputTitleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtInputTitleActionPerformed
+
+    private void txtResultTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResultTitleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtResultTitleActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -268,6 +472,18 @@ public class GUI extends javax.swing.JFrame {
         txtResult.setText(txtResultDefined+ "\n"+ text);
     }
 
+    Color getPrimaryColor(){
+        return primaryColor;
+    }
+    Color getSecondaryColor(){
+        return secondaryColor;
+    }
+    Color getTextPrimaryColor(){
+        return textPrimaryColor;
+    }
+    Color getTextSecondaryColor(){
+        return textSecondaryColor;
+    }
     void CleanButton() {
         txtInput.setText("");
         txtResult.setText("");
@@ -285,9 +501,19 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btnOpen;
     private javax.swing.JButton btnSemantic;
     private javax.swing.JButton btnSyntax;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JPanel panelLeft;
+    private javax.swing.JPanel panelMain;
+    private javax.swing.JPanel panelRight;
+    private javax.swing.JScrollPane scrPaneInput;
+    private javax.swing.JScrollPane scrPaneResult;
     private javax.swing.JTextArea txtInput;
+    private javax.swing.JTextField txtInputTitle;
     private javax.swing.JTextArea txtResult;
+    private javax.swing.JTextField txtResultTitle;
     // End of variables declaration//GEN-END:variables
 }
