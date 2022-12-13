@@ -31,10 +31,16 @@ public class GUI extends javax.swing.JFrame {
     InputManager inputManager;
     //Colors
     //rgba(10,25,47,255)
-    Color primaryColor = new Color(18,20,22,255);
+    //Color primaryColor = new Color(18,20,22,255);
     //rgba(23,42,70,255)
-    Color secondaryColor = new Color(12,12,12,255);
+    /*Color secondaryColor = new Color(12,12,12,255);
     Color thirdColor = new Color(31,31,33,255);
+    Color textPrimaryColor = new Color(255,255,255,255);
+    Color textSecondaryColor = new Color(200,200,200,255);*/
+    
+    Color primaryColor = new Color(44,39,69,255);
+    Color secondaryColor = new Color(26,23,44,255);
+    Color thirdColor = new Color(28,23,53,255);
     Color textPrimaryColor = new Color(255,255,255,255);
     Color textSecondaryColor = new Color(200,200,200,255);
     
@@ -44,6 +50,9 @@ public class GUI extends javax.swing.JFrame {
     
     //Button Tracker
     boolean isCleanEnabled = true;
+    boolean isLexicalEnabled = true;
+    boolean isSyntaxEnabled = true;
+    boolean isSemanticEnabled = true;
     //Fonts
     
     /**
@@ -82,15 +91,20 @@ public class GUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         panelRight = new javax.swing.JPanel();
-        pnlButtonRemove1 = new javax.swing.JPanel();
+        pnlSyntax = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        pnlButtonAdd1 = new javax.swing.JPanel();
+        pnlSemantic = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        pnlButtonAdd2 = new javax.swing.JPanel();
+        pnlLexical = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        panelRound2 = new materials.PanelRound();
+        jLabel12 = new javax.swing.JLabel();
+        panelRound3 = new materials.PanelRound();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,6 +145,7 @@ public class GUI extends javax.swing.JFrame {
         pnlInputTitle.setRoundTopRight(25);
 
         jLabel1.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setForeground(getTextPrimaryColor());
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Text.txt");
@@ -247,12 +262,6 @@ public class GUI extends javax.swing.JFrame {
 
         pnlButtonRemove.setBackground(getButtonColor());
         pnlButtonRemove.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlButtonRemoveMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlButtonRemoveMouseExited(evt);
-            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 pnlButtonRemoveMousePressed(evt);
             }
@@ -260,7 +269,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Acer\\Documents\\NetBeansProjects\\LabCaseStudyTPL\\src\\main\\java\\materials\\remove.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon("D:\\Cayl\\Cayl\\Netbeans\\Projects\\LabCaseStudy\\src\\main\\java\\materials\\remove.png")); // NOI18N
         jLabel4.setText(" ");
         jLabel4.setDisplayedMnemonicIndex(0);
 
@@ -303,7 +312,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Acer\\Documents\\NetBeansProjects\\LabCaseStudyTPL\\src\\main\\java\\materials\\add_24.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\Cayl\\Cayl\\Netbeans\\Projects\\LabCaseStudy\\src\\main\\java\\materials\\add_24.png")); // NOI18N
         jLabel2.setText(" ");
         jLabel2.setDisplayedMnemonicIndex(0);
 
@@ -349,22 +358,16 @@ public class GUI extends javax.swing.JFrame {
 
         panelRight.setBackground(getThirdColor());
 
-        pnlButtonRemove1.setBackground(getButtonColor());
-        pnlButtonRemove1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlButtonRemove1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlButtonRemove1MouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                pnlButtonRemove1MousePressed(evt);
+        pnlSyntax.setBackground(getButtonColor());
+        pnlSyntax.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlSyntaxMouseClicked(evt);
             }
         });
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Acer\\Documents\\NetBeansProjects\\LabCaseStudyTPL\\src\\main\\java\\materials\\remove.png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon("D:\\Cayl\\Cayl\\Netbeans\\Projects\\LabCaseStudy\\src\\main\\java\\materials\\add_24.png")); // NOI18N
         jLabel6.setText(" ");
         jLabel6.setDisplayedMnemonicIndex(0);
 
@@ -373,41 +376,35 @@ public class GUI extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Syntax Analysis");
 
-        javax.swing.GroupLayout pnlButtonRemove1Layout = new javax.swing.GroupLayout(pnlButtonRemove1);
-        pnlButtonRemove1.setLayout(pnlButtonRemove1Layout);
-        pnlButtonRemove1Layout.setHorizontalGroup(
-            pnlButtonRemove1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlButtonRemove1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlSyntaxLayout = new javax.swing.GroupLayout(pnlSyntax);
+        pnlSyntax.setLayout(pnlSyntaxLayout);
+        pnlSyntaxLayout.setHorizontalGroup(
+            pnlSyntaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSyntaxLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
         );
-        pnlButtonRemove1Layout.setVerticalGroup(
-            pnlButtonRemove1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlButtonRemove1Layout.createSequentialGroup()
-                .addGroup(pnlButtonRemove1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        pnlSyntaxLayout.setVerticalGroup(
+            pnlSyntaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSyntaxLayout.createSequentialGroup()
+                .addGroup(pnlSyntaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlButtonAdd1.setBackground(getButtonColor());
-        pnlButtonAdd1.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlSemantic.setBackground(getButtonColor());
+        pnlSemantic.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlButtonAdd1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlButtonAdd1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlButtonAdd1MouseExited(evt);
+                pnlSemanticMouseClicked(evt);
             }
         });
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Acer\\Documents\\NetBeansProjects\\LabCaseStudyTPL\\src\\main\\java\\materials\\add_24.png")); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon("D:\\Cayl\\Cayl\\Netbeans\\Projects\\LabCaseStudy\\src\\main\\java\\materials\\add_24.png")); // NOI18N
         jLabel8.setInheritsPopupMenu(false);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -415,39 +412,33 @@ public class GUI extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Semantic Analysis");
 
-        javax.swing.GroupLayout pnlButtonAdd1Layout = new javax.swing.GroupLayout(pnlButtonAdd1);
-        pnlButtonAdd1.setLayout(pnlButtonAdd1Layout);
-        pnlButtonAdd1Layout.setHorizontalGroup(
-            pnlButtonAdd1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlButtonAdd1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlSemanticLayout = new javax.swing.GroupLayout(pnlSemantic);
+        pnlSemantic.setLayout(pnlSemanticLayout);
+        pnlSemanticLayout.setHorizontalGroup(
+            pnlSemanticLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSemanticLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
         );
-        pnlButtonAdd1Layout.setVerticalGroup(
-            pnlButtonAdd1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlButtonAdd1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        pnlSemanticLayout.setVerticalGroup(
+            pnlSemanticLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSemanticLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlButtonAdd2.setBackground(getButtonColor());
-        pnlButtonAdd2.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlLexical.setBackground(getButtonColor());
+        pnlLexical.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlButtonAdd2MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlButtonAdd2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlButtonAdd2MouseExited(evt);
+                pnlLexicalMouseClicked(evt);
             }
         });
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Acer\\Documents\\NetBeansProjects\\LabCaseStudyTPL\\src\\main\\java\\materials\\add_24.png")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon("D:\\Cayl\\Cayl\\Netbeans\\Projects\\LabCaseStudy\\src\\main\\java\\materials\\add_24.png")); // NOI18N
         jLabel10.setText(" ");
         jLabel10.setDisplayedMnemonicIndex(0);
 
@@ -456,41 +447,105 @@ public class GUI extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Lexical Analysis");
 
-        javax.swing.GroupLayout pnlButtonAdd2Layout = new javax.swing.GroupLayout(pnlButtonAdd2);
-        pnlButtonAdd2.setLayout(pnlButtonAdd2Layout);
-        pnlButtonAdd2Layout.setHorizontalGroup(
-            pnlButtonAdd2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlButtonAdd2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlLexicalLayout = new javax.swing.GroupLayout(pnlLexical);
+        pnlLexical.setLayout(pnlLexicalLayout);
+        pnlLexicalLayout.setHorizontalGroup(
+            pnlLexicalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLexicalLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
         );
-        pnlButtonAdd2Layout.setVerticalGroup(
-            pnlButtonAdd2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlButtonAdd2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        pnlLexicalLayout.setVerticalGroup(
+            pnlLexicalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLexicalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelRound2.setBackground(getPrimaryColor());
+        panelRound2.setRoundTopLeft(25);
+        panelRound2.setRoundTopRight(25);
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel12.setForeground(getTextPrimaryColor());
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Notice:");
+
+        javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
+        panelRound2.setLayout(panelRound2Layout);
+        panelRound2Layout.setHorizontalGroup(
+            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panelRound2Layout.setVerticalGroup(
+            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        panelRound3.setBackground(getPrimaryColor());
+
+        jScrollPane1.setBorder(null);
+
+        jTextArea1.setBackground(getPrimaryColor());
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextArea1.setForeground(getTextPrimaryColor());
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("Lexical Analysis is Successful");
+        jTextArea1.setBorder(null);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        javax.swing.GroupLayout panelRound3Layout = new javax.swing.GroupLayout(panelRound3);
+        panelRound3.setLayout(panelRound3Layout);
+        panelRound3Layout.setHorizontalGroup(
+            panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound3Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelRound3Layout.setVerticalGroup(
+            panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound3Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelRightLayout = new javax.swing.GroupLayout(panelRight);
         panelRight.setLayout(panelRightLayout);
         panelRightLayout.setHorizontalGroup(
             panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlButtonAdd1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlButtonRemove1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlButtonAdd2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlSemantic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlSyntax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlLexical, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelRightLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelRound2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelRound3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         panelRightLayout.setVerticalGroup(
             panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRightLayout.createSequentialGroup()
-                .addContainerGap(241, Short.MAX_VALUE)
-                .addComponent(pnlButtonAdd2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(pnlButtonRemove1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelRound3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(pnlLexical, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(pnlButtonAdd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlSyntax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(pnlSemantic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70))
         );
 
@@ -502,9 +557,8 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(panelLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(panelRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -540,6 +594,9 @@ public class GUI extends javax.swing.JFrame {
         
         //disable buttons
         isCleanEnabled = BtnEnable(pnlButtonRemove,false);
+        isLexicalEnabled = BtnEnable(pnlLexical,false);
+        isSyntaxEnabled = BtnEnable(pnlSyntax,false);
+        isSemanticEnabled=BtnEnable(pnlSemantic,false);
     }
     private void txtResultTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResultTitleActionPerformed
         // TODO add your handling code here:
@@ -553,14 +610,6 @@ public class GUI extends javax.swing.JFrame {
         BtnOpenExit(pnlButtonAdd,true);
     }//GEN-LAST:event_pnlButtonAddMouseExited
 
-    private void pnlButtonRemoveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonRemoveMouseEntered
-        BtnOpenHover(pnlButtonRemove,isCleanEnabled);
-    }//GEN-LAST:event_pnlButtonRemoveMouseEntered
-
-    private void pnlButtonRemoveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonRemoveMouseExited
-       BtnOpenExit(pnlButtonRemove,isCleanEnabled);
-    }//GEN-LAST:event_pnlButtonRemoveMouseExited
-
     private void pnlButtonAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonAddMouseClicked
         BtnOpen();
         
@@ -572,41 +621,20 @@ public class GUI extends javax.swing.JFrame {
         //pnlButtonRemove.setBackground(buttonDisable);
     }//GEN-LAST:event_pnlButtonRemoveMousePressed
 
-    private void pnlButtonRemove1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonRemove1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pnlButtonRemove1MouseEntered
+    private void pnlLexicalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLexicalMouseClicked
+       if(!isLexicalEnabled)return;
+       BtnLexical();
+    }//GEN-LAST:event_pnlLexicalMouseClicked
 
-    private void pnlButtonRemove1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonRemove1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pnlButtonRemove1MouseExited
+    private void pnlSyntaxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSyntaxMouseClicked
+        if(!isSyntaxEnabled)return;
+        BtnSyntax();
+    }//GEN-LAST:event_pnlSyntaxMouseClicked
 
-    private void pnlButtonRemove1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonRemove1MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pnlButtonRemove1MousePressed
-
-    private void pnlButtonAdd1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonAdd1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pnlButtonAdd1MouseClicked
-
-    private void pnlButtonAdd1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonAdd1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pnlButtonAdd1MouseEntered
-
-    private void pnlButtonAdd1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonAdd1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pnlButtonAdd1MouseExited
-
-    private void pnlButtonAdd2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonAdd2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pnlButtonAdd2MouseClicked
-
-    private void pnlButtonAdd2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonAdd2MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pnlButtonAdd2MouseEntered
-
-    private void pnlButtonAdd2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonAdd2MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pnlButtonAdd2MouseExited
+    private void pnlSemanticMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSemanticMouseClicked
+        if(!isSemanticEnabled)return;
+        BtnSemantic();
+    }//GEN-LAST:event_pnlSemanticMouseClicked
 
     /**
      * @param args the command line arguments
@@ -651,16 +679,13 @@ public class GUI extends javax.swing.JFrame {
         panel.setBackground(buttonColor);
     }
     boolean BtnEnable(javax.swing.JPanel panel,boolean isEnable){
-        //panel.setVisible(isEnable);
-        //int alpha = 
+        
         panel.setBackground((isEnable)? buttonColor: buttonDisable);
         for(Component label: panel.getComponents()){
             label.setForeground(transparentColor(label.getForeground(),(isEnable)?255:50));
             //label.setEnabled(isEnable);
-            
         }
         //panel.setEnabled(true);
-        
         return isEnable;
     }
     Color transparentColor(Color color, int alphaValue){
@@ -687,6 +712,7 @@ public class GUI extends javax.swing.JFrame {
             //btnSyntax.setVisible(false);
             //btnSemantic.setVisible(false);
             isCleanEnabled=BtnEnable(pnlButtonRemove,true);
+            isLexicalEnabled = BtnEnable(pnlLexical,true);
         } catch (FileNotFoundException ex) {
             SetResultTextView("File is not found");
             //isCleanEnabled=BtnEnable(pnlButtonRemove,false);
@@ -703,9 +729,8 @@ public class GUI extends javax.swing.JFrame {
             output+="\n";
         }
         SetResultTextView(output);
-        //btnSyntax.setEnabled(true);
-        //btnSyntax.setVisible(true);
-        //btnLexical.setVisible(false);
+        isLexicalEnabled = BtnEnable(pnlLexical,false);
+        isSyntaxEnabled = BtnEnable(pnlSyntax,true);
     }
     void BtnSyntax(){
         List<Boolean> syntaxList = inputManager.SyntaxAnalysis();
@@ -723,6 +748,8 @@ public class GUI extends javax.swing.JFrame {
         //if(!isThereFalse)btnSemantic.setEnabled(true); 
         //btnSyntax.setVisible(false);
         //btnSemantic.setVisible(true);
+        isSyntaxEnabled = BtnEnable(pnlSyntax,false);
+        isSemanticEnabled = BtnEnable(pnlSemantic,true);
     }
     void BtnSemantic(){
         List<Boolean> semanticList = inputManager.SemanticAnalysis();
@@ -736,6 +763,7 @@ public class GUI extends javax.swing.JFrame {
            txt+="Semantic is valid!!\n";  
         }
         SetResultTextView(txt);
+        isSemanticEnabled = BtnEnable(pnlSemantic,false);
     }
         
     //Methods
@@ -770,6 +798,9 @@ public class GUI extends javax.swing.JFrame {
         //btnSyntax.setEnabled(false);
         //btnSemantic.setEnabled(false);
         isCleanEnabled=BtnEnable(pnlButtonRemove,false);
+        isLexicalEnabled = BtnEnable(pnlLexical,false);
+        isSyntaxEnabled = BtnEnable(pnlSyntax,false);
+        isSemanticEnabled=BtnEnable(pnlSemantic,false);
     }
 
 
@@ -777,6 +808,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -787,16 +819,20 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JPanel panelLeft;
     private javax.swing.JPanel panelMain;
     private javax.swing.JPanel panelRight;
     private materials.PanelRound panelRound1;
+    private materials.PanelRound panelRound2;
+    private materials.PanelRound panelRound3;
     private javax.swing.JPanel pnlButtonAdd;
-    private javax.swing.JPanel pnlButtonAdd1;
-    private javax.swing.JPanel pnlButtonAdd2;
     private javax.swing.JPanel pnlButtonRemove;
-    private javax.swing.JPanel pnlButtonRemove1;
     private materials.PanelRound pnlInputTitle;
+    private javax.swing.JPanel pnlLexical;
+    private javax.swing.JPanel pnlSemantic;
+    private javax.swing.JPanel pnlSyntax;
     private javax.swing.JScrollPane scrPaneInput;
     private javax.swing.JScrollPane scrPaneResult;
     private javax.swing.JTextArea txtInput;
