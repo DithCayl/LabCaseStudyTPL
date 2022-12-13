@@ -46,7 +46,7 @@ public class GUI extends javax.swing.JFrame {
     
     Color buttonColor = new Color(76,75,221,255);
     Color buttonHover = new Color(0,115,255);
-    Color buttonDisable = new Color(76,75,221,50);
+    Color buttonDisable = new Color(40,36,81,255);
     
     //Button Tracker
     boolean isCleanEnabled = true;
@@ -262,6 +262,12 @@ public class GUI extends javax.swing.JFrame {
 
         pnlButtonRemove.setBackground(getButtonColor());
         pnlButtonRemove.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlButtonRemoveMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlButtonRemoveMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 pnlButtonRemoveMousePressed(evt);
             }
@@ -269,7 +275,6 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon("D:\\Cayl\\Cayl\\Netbeans\\Projects\\LabCaseStudy\\src\\main\\java\\materials\\remove.png")); // NOI18N
         jLabel4.setText(" ");
         jLabel4.setDisplayedMnemonicIndex(0);
 
@@ -312,7 +317,6 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\Cayl\\Cayl\\Netbeans\\Projects\\LabCaseStudy\\src\\main\\java\\materials\\add_24.png")); // NOI18N
         jLabel2.setText(" ");
         jLabel2.setDisplayedMnemonicIndex(0);
 
@@ -363,11 +367,16 @@ public class GUI extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlSyntaxMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlSyntaxMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlSyntaxMouseExited(evt);
+            }
         });
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon("D:\\Cayl\\Cayl\\Netbeans\\Projects\\LabCaseStudy\\src\\main\\java\\materials\\add_24.png")); // NOI18N
         jLabel6.setText(" ");
         jLabel6.setDisplayedMnemonicIndex(0);
 
@@ -401,10 +410,15 @@ public class GUI extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlSemanticMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlSemanticMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlSemanticMouseExited(evt);
+            }
         });
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setIcon(new javax.swing.ImageIcon("D:\\Cayl\\Cayl\\Netbeans\\Projects\\LabCaseStudy\\src\\main\\java\\materials\\add_24.png")); // NOI18N
         jLabel8.setInheritsPopupMenu(false);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -435,10 +449,15 @@ public class GUI extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlLexicalMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlLexicalMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlLexicalMouseExited(evt);
+            }
         });
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setIcon(new javax.swing.ImageIcon("D:\\Cayl\\Cayl\\Netbeans\\Projects\\LabCaseStudy\\src\\main\\java\\materials\\add_24.png")); // NOI18N
         jLabel10.setText(" ");
         jLabel10.setDisplayedMnemonicIndex(0);
 
@@ -603,11 +622,11 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_txtResultTitleActionPerformed
 
     private void pnlButtonAddMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonAddMouseEntered
-       BtnOpenHover(pnlButtonAdd,true);
+       ButtonHover(pnlButtonAdd,true);
     }//GEN-LAST:event_pnlButtonAddMouseEntered
 
     private void pnlButtonAddMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonAddMouseExited
-        BtnOpenExit(pnlButtonAdd,true);
+        ButtonHoverExit(pnlButtonAdd,true);
     }//GEN-LAST:event_pnlButtonAddMouseExited
 
     private void pnlButtonAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonAddMouseClicked
@@ -635,6 +654,38 @@ public class GUI extends javax.swing.JFrame {
         if(!isSemanticEnabled)return;
         BtnSemantic();
     }//GEN-LAST:event_pnlSemanticMouseClicked
+
+    private void pnlButtonRemoveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonRemoveMouseEntered
+        ButtonHover(pnlButtonRemove, isCleanEnabled);
+    }//GEN-LAST:event_pnlButtonRemoveMouseEntered
+
+    private void pnlButtonRemoveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonRemoveMouseExited
+        ButtonHoverExit(pnlButtonRemove,isCleanEnabled);
+    }//GEN-LAST:event_pnlButtonRemoveMouseExited
+
+    private void pnlLexicalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLexicalMouseEntered
+        ButtonHover(pnlLexical, isLexicalEnabled);
+    }//GEN-LAST:event_pnlLexicalMouseEntered
+
+    private void pnlLexicalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLexicalMouseExited
+       ButtonHoverExit(pnlLexical, isLexicalEnabled);
+    }//GEN-LAST:event_pnlLexicalMouseExited
+
+    private void pnlSyntaxMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSyntaxMouseEntered
+        ButtonHover(pnlSyntax, isSyntaxEnabled);
+    }//GEN-LAST:event_pnlSyntaxMouseEntered
+
+    private void pnlSyntaxMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSyntaxMouseExited
+        ButtonHoverExit(pnlSyntax, isSyntaxEnabled);
+    }//GEN-LAST:event_pnlSyntaxMouseExited
+
+    private void pnlSemanticMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSemanticMouseEntered
+       ButtonHover(pnlSemantic, isSemanticEnabled);
+    }//GEN-LAST:event_pnlSemanticMouseEntered
+
+    private void pnlSemanticMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSemanticMouseExited
+        ButtonHoverExit(pnlSemantic, isSemanticEnabled);
+    }//GEN-LAST:event_pnlSemanticMouseExited
 
     /**
      * @param args the command line arguments
@@ -670,11 +721,11 @@ public class GUI extends javax.swing.JFrame {
             }
         });
     }
-    void BtnOpenHover(javax.swing.JPanel panel, boolean tracker){
+    void ButtonHover(javax.swing.JPanel panel, boolean tracker){
         if(!tracker)return;
         panel.setBackground(buttonHover);
     }
-    void BtnOpenExit(javax.swing.JPanel panel, boolean tracker){
+    void ButtonHoverExit(javax.swing.JPanel panel, boolean tracker){
         if(!tracker)return;
         panel.setBackground(buttonColor);
     }
@@ -682,8 +733,8 @@ public class GUI extends javax.swing.JFrame {
         
         panel.setBackground((isEnable)? buttonColor: buttonDisable);
         for(Component label: panel.getComponents()){
-            label.setForeground(transparentColor(label.getForeground(),(isEnable)?255:50));
-            //label.setEnabled(isEnable);
+            //label.setForeground(transparentColor(label.getForeground(),(isEnable)?255:50));
+            label.setEnabled(isEnable);
         }
         //panel.setEnabled(true);
         return isEnable;

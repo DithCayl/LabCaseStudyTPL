@@ -362,6 +362,8 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlButtonRemoveMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlButtonRemoveMouseExited"/>
             <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlButtonRemoveMousePressed"/>
           </Events>
 
@@ -396,9 +398,6 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\Cayl\Cayl\Netbeans\Projects\LabCaseStudy\src\main\java\materials\remove.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value=" "/>
                 <Property name="displayedMnemonicIndex" type="int" value="0"/>
               </Properties>
@@ -454,9 +453,6 @@
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\Cayl\Cayl\Netbeans\Projects\LabCaseStudy\src\main\java\materials\add_24.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value=" "/>
                 <Property name="displayedMnemonicIndex" type="int" value="0"/>
               </Properties>
@@ -527,6 +523,8 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlSyntaxMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlSyntaxMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlSyntaxMouseExited"/>
           </Events>
 
           <Layout>
@@ -560,9 +558,6 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\Cayl\Cayl\Netbeans\Projects\LabCaseStudy\src\main\java\materials\add_24.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value=" "/>
                 <Property name="displayedMnemonicIndex" type="int" value="0"/>
               </Properties>
@@ -589,6 +584,8 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlSemanticMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlSemanticMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlSemanticMouseExited"/>
           </Events>
 
           <Layout>
@@ -616,9 +613,6 @@
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\Cayl\Cayl\Netbeans\Projects\LabCaseStudy\src\main\java\materials\add_24.png"/>
-                </Property>
                 <Property name="inheritsPopupMenu" type="boolean" value="false"/>
               </Properties>
             </Component>
@@ -644,6 +638,8 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlLexicalMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlLexicalMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlLexicalMouseExited"/>
           </Events>
 
           <Layout>
@@ -671,9 +667,6 @@
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\Cayl\Cayl\Netbeans\Projects\LabCaseStudy\src\main\java\materials\add_24.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value=" "/>
                 <Property name="displayedMnemonicIndex" type="int" value="0"/>
               </Properties>
