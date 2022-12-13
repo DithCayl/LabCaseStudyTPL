@@ -5,6 +5,7 @@
 package com.tpl.group2.labcasestudy;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 import javax.swing.BorderFactory;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import materials.TextLineNumber;
@@ -29,13 +31,19 @@ public class GUI extends javax.swing.JFrame {
     InputManager inputManager;
     //Colors
     //rgba(10,25,47,255)
-    Color primaryColor = new Color(10,25,47,255);
+    Color primaryColor = new Color(18,20,22,255);
     //rgba(23,42,70,255)
-    Color secondaryColor = new Color(23,42,70,255);
+    Color secondaryColor = new Color(12,12,12,255);
+    Color thirdColor = new Color(31,31,33,255);
     Color textPrimaryColor = new Color(255,255,255,255);
     Color textSecondaryColor = new Color(200,200,200,255);
-    Color buttonColor = new Color(23,42,70,255);
     
+    Color buttonColor = new Color(76,75,221,255);
+    Color buttonHover = new Color(0,115,255);
+    Color buttonDisable = new Color(76,75,221,50);
+    
+    //Button Tracker
+    boolean isCleanEnabled = true;
     //Fonts
     
     /**
@@ -61,17 +69,28 @@ public class GUI extends javax.swing.JFrame {
         txtInput = new javax.swing.JTextArea();
         pnlInputTitle = new materials.PanelRound();
         jLabel1 = new javax.swing.JLabel();
+        panelRound1 = new materials.PanelRound();
+        txtResultTitle = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
         scrPaneResult = new javax.swing.JScrollPane();
         txtResult = new javax.swing.JTextArea();
-        pnlResultTitle = new javax.swing.JPanel();
-        txtResultTitle = new javax.swing.JTextField();
         panelLeft = new javax.swing.JPanel();
+        pnlButtonRemove = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         pnlButtonAdd = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        panelRight = new javax.swing.JPanel();
+        pnlButtonRemove1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         pnlButtonAdd1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        pnlButtonAdd2 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -132,21 +151,12 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        scrPaneResult.setBorder(null);
-
-        txtResult.setEditable(false);
-        txtResult.setBackground(getSecondaryColor());
-        txtResult.setColumns(20);
-        txtResult.setForeground(getTextPrimaryColor());
-        txtResult.setRows(5);
-        txtResult.setText("<data_type><identifier>");
-        txtResult.setBorder(null);
-        txtResult.setMargin(new java.awt.Insets(0, 6, 0, 6));
-        scrPaneResult.setViewportView(txtResult);
-
-        pnlResultTitle.setBackground(getSecondaryColor());
+        panelRound1.setBackground(getSecondaryColor());
+        panelRound1.setRoundTopLeft(25);
+        panelRound1.setRoundTopRight(25);
 
         txtResultTitle.setBackground(getSecondaryColor());
+        txtResultTitle.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtResultTitle.setForeground(getTextPrimaryColor());
         txtResultTitle.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtResultTitle.setText("Result");
@@ -158,18 +168,53 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout pnlResultTitleLayout = new javax.swing.GroupLayout(pnlResultTitle);
-        pnlResultTitle.setLayout(pnlResultTitleLayout);
-        pnlResultTitleLayout.setHorizontalGroup(
-            pnlResultTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlResultTitleLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtResultTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
-                .addContainerGap())
+        javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
+        panelRound1.setLayout(panelRound1Layout);
+        panelRound1Layout.setHorizontalGroup(
+            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(txtResultTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
-        pnlResultTitleLayout.setVerticalGroup(
-            pnlResultTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtResultTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+        panelRound1Layout.setVerticalGroup(
+            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtResultTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
+        );
+
+        jPanel2.setBackground(getSecondaryColor());
+
+        scrPaneResult.setBorder(null);
+
+        txtResult.setEditable(false);
+        txtResult.setBackground(getSecondaryColor());
+        txtResult.setColumns(20);
+        txtResult.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        txtResult.setForeground(getTextPrimaryColor());
+        txtResult.setRows(5);
+        txtResult.setText("<data_type><identifier>");
+        txtResult.setBorder(null);
+        txtResult.setMargin(new java.awt.Insets(0, 6, 0, 6));
+        scrPaneResult.setViewportView(txtResult);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(scrPaneResult, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(scrPaneResult, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout panelMainLayout = new javax.swing.GroupLayout(panelMain);
@@ -177,66 +222,95 @@ public class GUI extends javax.swing.JFrame {
         panelMainLayout.setHorizontalGroup(
             panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMainLayout.createSequentialGroup()
-                .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(36, 36, 36)
+                .addGroup(panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlInputTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scrPaneInput, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlResultTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scrPaneResult, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(scrPaneInput, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(panelRound1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 34, Short.MAX_VALUE))
         );
         panelMainLayout.setVerticalGroup(
             panelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMainLayout.createSequentialGroup()
                 .addComponent(pnlInputTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(scrPaneInput, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(pnlResultTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(scrPaneResult, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        panelLeft.setBackground(getSecondaryColor());
+        panelLeft.setBackground(getThirdColor());
 
-        pnlButtonAdd.setBackground(getSecondaryColor());
+        pnlButtonRemove.setBackground(getButtonColor());
+        pnlButtonRemove.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlButtonRemoveMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlButtonRemoveMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pnlButtonRemoveMousePressed(evt);
+            }
+        });
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText(" ");
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setForeground(getTextSecondaryColor());
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Open Document");
-
-        pnlButtonAdd1.setBackground(getSecondaryColor());
-
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Acer\\Documents\\NetBeansProjects\\LabCaseStudyTPL\\src\\main\\java\\materials\\remove.png")); // NOI18N
         jLabel4.setText(" ");
+        jLabel4.setDisplayedMnemonicIndex(0);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setForeground(getTextSecondaryColor());
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Clean Document");
 
-        javax.swing.GroupLayout pnlButtonAdd1Layout = new javax.swing.GroupLayout(pnlButtonAdd1);
-        pnlButtonAdd1.setLayout(pnlButtonAdd1Layout);
-        pnlButtonAdd1Layout.setHorizontalGroup(
-            pnlButtonAdd1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlButtonAdd1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlButtonRemoveLayout = new javax.swing.GroupLayout(pnlButtonRemove);
+        pnlButtonRemove.setLayout(pnlButtonRemoveLayout);
+        pnlButtonRemoveLayout.setHorizontalGroup(
+            pnlButtonRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonRemoveLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
         );
-        pnlButtonAdd1Layout.setVerticalGroup(
-            pnlButtonAdd1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlButtonAdd1Layout.createSequentialGroup()
-                .addGroup(pnlButtonAdd1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        pnlButtonRemoveLayout.setVerticalGroup(
+            pnlButtonRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonRemoveLayout.createSequentialGroup()
+                .addGroup(pnlButtonRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        pnlButtonAdd.setBackground(getButtonColor());
+        pnlButtonAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlButtonAddMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlButtonAddMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlButtonAddMouseExited(evt);
+            }
+        });
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Acer\\Documents\\NetBeansProjects\\LabCaseStudyTPL\\src\\main\\java\\materials\\add_24.png")); // NOI18N
+        jLabel2.setText(" ");
+        jLabel2.setDisplayedMnemonicIndex(0);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setForeground(getTextSecondaryColor());
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Open Document");
 
         javax.swing.GroupLayout pnlButtonAddLayout = new javax.swing.GroupLayout(pnlButtonAdd);
         pnlButtonAdd.setLayout(pnlButtonAddLayout);
@@ -246,19 +320,14 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
-            .addComponent(pnlButtonAdd1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlButtonAddLayout.setVerticalGroup(
             pnlButtonAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlButtonAddLayout.createSequentialGroup()
-                .addGroup(pnlButtonAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, 0)
-                .addComponent(pnlButtonAdd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pnlButtonAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelLeftLayout = new javax.swing.GroupLayout(panelLeft);
@@ -266,13 +335,163 @@ public class GUI extends javax.swing.JFrame {
         panelLeftLayout.setHorizontalGroup(
             panelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlButtonAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlButtonRemove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelLeftLayout.setVerticalGroup(
             panelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLeftLayout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addComponent(pnlButtonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(272, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(pnlButtonRemove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelRight.setBackground(getThirdColor());
+
+        pnlButtonRemove1.setBackground(getButtonColor());
+        pnlButtonRemove1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlButtonRemove1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlButtonRemove1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pnlButtonRemove1MousePressed(evt);
+            }
+        });
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Acer\\Documents\\NetBeansProjects\\LabCaseStudyTPL\\src\\main\\java\\materials\\remove.png")); // NOI18N
+        jLabel6.setText(" ");
+        jLabel6.setDisplayedMnemonicIndex(0);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setForeground(getTextSecondaryColor());
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Syntax Analysis");
+
+        javax.swing.GroupLayout pnlButtonRemove1Layout = new javax.swing.GroupLayout(pnlButtonRemove1);
+        pnlButtonRemove1.setLayout(pnlButtonRemove1Layout);
+        pnlButtonRemove1Layout.setHorizontalGroup(
+            pnlButtonRemove1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonRemove1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
+        );
+        pnlButtonRemove1Layout.setVerticalGroup(
+            pnlButtonRemove1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonRemove1Layout.createSequentialGroup()
+                .addGroup(pnlButtonRemove1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pnlButtonAdd1.setBackground(getButtonColor());
+        pnlButtonAdd1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlButtonAdd1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlButtonAdd1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlButtonAdd1MouseExited(evt);
+            }
+        });
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Acer\\Documents\\NetBeansProjects\\LabCaseStudyTPL\\src\\main\\java\\materials\\add_24.png")); // NOI18N
+        jLabel8.setInheritsPopupMenu(false);
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setForeground(getTextSecondaryColor());
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Semantic Analysis");
+
+        javax.swing.GroupLayout pnlButtonAdd1Layout = new javax.swing.GroupLayout(pnlButtonAdd1);
+        pnlButtonAdd1.setLayout(pnlButtonAdd1Layout);
+        pnlButtonAdd1Layout.setHorizontalGroup(
+            pnlButtonAdd1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonAdd1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
+        );
+        pnlButtonAdd1Layout.setVerticalGroup(
+            pnlButtonAdd1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonAdd1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pnlButtonAdd2.setBackground(getButtonColor());
+        pnlButtonAdd2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlButtonAdd2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlButtonAdd2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlButtonAdd2MouseExited(evt);
+            }
+        });
+
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Acer\\Documents\\NetBeansProjects\\LabCaseStudyTPL\\src\\main\\java\\materials\\add_24.png")); // NOI18N
+        jLabel10.setText(" ");
+        jLabel10.setDisplayedMnemonicIndex(0);
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel11.setForeground(getTextSecondaryColor());
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Lexical Analysis");
+
+        javax.swing.GroupLayout pnlButtonAdd2Layout = new javax.swing.GroupLayout(pnlButtonAdd2);
+        pnlButtonAdd2.setLayout(pnlButtonAdd2Layout);
+        pnlButtonAdd2Layout.setHorizontalGroup(
+            pnlButtonAdd2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonAdd2Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
+        );
+        pnlButtonAdd2Layout.setVerticalGroup(
+            pnlButtonAdd2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonAdd2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout panelRightLayout = new javax.swing.GroupLayout(panelRight);
+        panelRight.setLayout(panelRightLayout);
+        panelRightLayout.setHorizontalGroup(
+            panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlButtonAdd1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlButtonRemove1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlButtonAdd2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panelRightLayout.setVerticalGroup(
+            panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRightLayout.createSequentialGroup()
+                .addContainerGap(241, Short.MAX_VALUE)
+                .addComponent(pnlButtonAdd2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(pnlButtonRemove1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(pnlButtonAdd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -281,19 +500,22 @@ public class GUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(panelRight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelLeft, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(panelLeft, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(224, Short.MAX_VALUE))
+                        .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -312,14 +534,79 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().setBackground( primaryColor);
         
         //Buttons
-        Border emptyBorder = BorderFactory.createEmptyBorder(4, 4, 4, 4);
+        //Border emptyBorder = BorderFactory.createEmptyBorder(4, 4, 4, 4);
         //btnSemantic.setBorder(emptyBorder);
         //btnSemantic.setContentAreaFilled(false);
         
+        //disable buttons
+        isCleanEnabled = BtnEnable(pnlButtonRemove,false);
     }
     private void txtResultTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResultTitleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtResultTitleActionPerformed
+
+    private void pnlButtonAddMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonAddMouseEntered
+       BtnOpenHover(pnlButtonAdd,true);
+    }//GEN-LAST:event_pnlButtonAddMouseEntered
+
+    private void pnlButtonAddMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonAddMouseExited
+        BtnOpenExit(pnlButtonAdd,true);
+    }//GEN-LAST:event_pnlButtonAddMouseExited
+
+    private void pnlButtonRemoveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonRemoveMouseEntered
+        BtnOpenHover(pnlButtonRemove,isCleanEnabled);
+    }//GEN-LAST:event_pnlButtonRemoveMouseEntered
+
+    private void pnlButtonRemoveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonRemoveMouseExited
+       BtnOpenExit(pnlButtonRemove,isCleanEnabled);
+    }//GEN-LAST:event_pnlButtonRemoveMouseExited
+
+    private void pnlButtonAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonAddMouseClicked
+        BtnOpen();
+        
+    }//GEN-LAST:event_pnlButtonAddMouseClicked
+
+    private void pnlButtonRemoveMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonRemoveMousePressed
+         if(!isCleanEnabled)return;
+        CleanButton();
+        //pnlButtonRemove.setBackground(buttonDisable);
+    }//GEN-LAST:event_pnlButtonRemoveMousePressed
+
+    private void pnlButtonRemove1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonRemove1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlButtonRemove1MouseEntered
+
+    private void pnlButtonRemove1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonRemove1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlButtonRemove1MouseExited
+
+    private void pnlButtonRemove1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonRemove1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlButtonRemove1MousePressed
+
+    private void pnlButtonAdd1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonAdd1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlButtonAdd1MouseClicked
+
+    private void pnlButtonAdd1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonAdd1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlButtonAdd1MouseEntered
+
+    private void pnlButtonAdd1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonAdd1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlButtonAdd1MouseExited
+
+    private void pnlButtonAdd2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonAdd2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlButtonAdd2MouseClicked
+
+    private void pnlButtonAdd2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonAdd2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlButtonAdd2MouseEntered
+
+    private void pnlButtonAdd2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonAdd2MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlButtonAdd2MouseExited
 
     /**
      * @param args the command line arguments
@@ -355,6 +642,31 @@ public class GUI extends javax.swing.JFrame {
             }
         });
     }
+    void BtnOpenHover(javax.swing.JPanel panel, boolean tracker){
+        if(!tracker)return;
+        panel.setBackground(buttonHover);
+    }
+    void BtnOpenExit(javax.swing.JPanel panel, boolean tracker){
+        if(!tracker)return;
+        panel.setBackground(buttonColor);
+    }
+    boolean BtnEnable(javax.swing.JPanel panel,boolean isEnable){
+        //panel.setVisible(isEnable);
+        //int alpha = 
+        panel.setBackground((isEnable)? buttonColor: buttonDisable);
+        for(Component label: panel.getComponents()){
+            label.setForeground(transparentColor(label.getForeground(),(isEnable)?255:50));
+            //label.setEnabled(isEnable);
+            
+        }
+        //panel.setEnabled(true);
+        
+        return isEnable;
+    }
+    Color transparentColor(Color color, int alphaValue){
+        Color newCol = new Color(color.getRed(),color.getGreen(),color.getBlue(),alphaValue);
+        return newCol;
+    }
     void BtnOpen(){
         CleanButton();
         String path = System.getProperty("user.home") + "/Desktop/Input1.txt";
@@ -374,8 +686,10 @@ public class GUI extends javax.swing.JFrame {
             //btnLexical.setEnabled(true);
             //btnSyntax.setVisible(false);
             //btnSemantic.setVisible(false);
+            isCleanEnabled=BtnEnable(pnlButtonRemove,true);
         } catch (FileNotFoundException ex) {
             SetResultTextView("File is not found");
+            //isCleanEnabled=BtnEnable(pnlButtonRemove,false);
         }
     }
     
@@ -435,11 +749,17 @@ public class GUI extends javax.swing.JFrame {
     Color getSecondaryColor(){
         return secondaryColor;
     }
+    Color getThirdColor(){
+        return thirdColor;
+    }
     Color getTextPrimaryColor(){
         return textPrimaryColor;
     }
     Color getTextSecondaryColor(){
         return textSecondaryColor;
+    }
+    Color getButtonColor(){
+        return buttonColor;
     }
     void CleanButton() {
         txtInput.setText("");
@@ -449,22 +769,34 @@ public class GUI extends javax.swing.JFrame {
         //btnLexical.setEnabled(false);
         //btnSyntax.setEnabled(false);
         //btnSemantic.setEnabled(false);
+        isCleanEnabled=BtnEnable(pnlButtonRemove,false);
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel panelLeft;
     private javax.swing.JPanel panelMain;
+    private javax.swing.JPanel panelRight;
+    private materials.PanelRound panelRound1;
     private javax.swing.JPanel pnlButtonAdd;
     private javax.swing.JPanel pnlButtonAdd1;
+    private javax.swing.JPanel pnlButtonAdd2;
+    private javax.swing.JPanel pnlButtonRemove;
+    private javax.swing.JPanel pnlButtonRemove1;
     private materials.PanelRound pnlInputTitle;
-    private javax.swing.JPanel pnlResultTitle;
     private javax.swing.JScrollPane scrPaneInput;
     private javax.swing.JScrollPane scrPaneResult;
     private javax.swing.JTextArea txtInput;
