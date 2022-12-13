@@ -20,6 +20,7 @@ public class InputObject {
     String dataString;
     List<String> valueList = new ArrayList();
 
+    int lineNumber;
     public String getDataString() {
         return dataString;
     }
@@ -45,9 +46,18 @@ public class InputObject {
         this.tokenList = tokenList;
     }
     
-    public InputObject(String input, List<String> sortedInput) {
+    public InputObject(String input, List<String> sortedInput, int lineNumber) {
         this.input = input;
         this.sortedInput = sortedInput;
+        this.lineNumber = lineNumber;
+    }
+
+    public int getLineNumber() {
+        return lineNumber;
+    }
+
+    public void setLineNumber(int lineNumber) {
+        this.lineNumber = lineNumber;
     }
 
     public String getInput() {

@@ -24,13 +24,15 @@ public class InputManager {
 
     public InputManager(List<String> inputList){
         this.inputList = inputList;
+        int i = 0;
         for(String input: inputList){
+            i++;
             List<String> inputSorted = new ArrayList();
             Matcher matcher = Pattern.compile(inputRegExPattern).matcher(input);
             while(matcher.find()){
                 inputSorted.add(matcher.group());
             }
-            inputObjectList.add(new InputObject(input,inputSorted));
+            inputObjectList.add(new InputObject(input,inputSorted,i));
         }
         
         isFileOpen = true;

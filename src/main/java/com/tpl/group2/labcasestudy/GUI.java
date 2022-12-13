@@ -77,7 +77,7 @@ public class GUI extends javax.swing.JFrame {
         scrPaneInput = new javax.swing.JScrollPane();
         txtInput = new javax.swing.JTextArea();
         pnlInputTitle = new materials.PanelRound();
-        jLabel1 = new javax.swing.JLabel();
+        txtTitle = new javax.swing.JLabel();
         panelRound1 = new materials.PanelRound();
         txtResultTitle = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
@@ -104,7 +104,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         panelRound3 = new materials.PanelRound();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtNotice = new javax.swing.JTextArea();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,13 +128,14 @@ public class GUI extends javax.swing.JFrame {
         scrPaneInput.setBackground(getPrimaryColor());
         scrPaneInput.setBorder(null);
 
+        txtInput.setEditable(false);
         txtInput.setBackground(getSecondaryColor());
         txtInput.setColumns(20);
         txtInput.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtInput.setForeground(getTextPrimaryColor());
         txtInput.setLineWrap(true);
         txtInput.setRows(5);
-        txtInput.setText("int i =10;\nString watashi = \"uwu\";\nchar c = 'c';");
+        txtInput.setWrapStyleWord(true);
         txtInput.setBorder(null);
         txtInput.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtInput.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -144,11 +145,11 @@ public class GUI extends javax.swing.JFrame {
         pnlInputTitle.setRoundTopLeft(25);
         pnlInputTitle.setRoundTopRight(25);
 
-        jLabel1.setBackground(new java.awt.Color(51, 51, 51));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setForeground(getTextPrimaryColor());
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Text.txt");
+        txtTitle.setBackground(new java.awt.Color(51, 51, 51));
+        txtTitle.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtTitle.setForeground(getTextPrimaryColor());
+        txtTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtTitle.setText("Text.txt");
 
         javax.swing.GroupLayout pnlInputTitleLayout = new javax.swing.GroupLayout(pnlInputTitle);
         pnlInputTitle.setLayout(pnlInputTitleLayout);
@@ -156,14 +157,14 @@ public class GUI extends javax.swing.JFrame {
             pnlInputTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlInputTitleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(11, Short.MAX_VALUE))
         );
         pnlInputTitleLayout.setVerticalGroup(
             pnlInputTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInputTitleLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         panelRound1.setBackground(getSecondaryColor());
@@ -210,7 +211,6 @@ public class GUI extends javax.swing.JFrame {
         txtResult.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         txtResult.setForeground(getTextPrimaryColor());
         txtResult.setRows(5);
-        txtResult.setText("<data_type><identifier>");
         txtResult.setBorder(null);
         txtResult.setMargin(new java.awt.Insets(0, 6, 0, 6));
         scrPaneResult.setViewportView(txtResult);
@@ -227,7 +227,7 @@ public class GUI extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(scrPaneResult, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -511,15 +511,17 @@ public class GUI extends javax.swing.JFrame {
 
         jScrollPane1.setBorder(null);
 
-        jTextArea1.setBackground(getPrimaryColor());
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextArea1.setForeground(getTextPrimaryColor());
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Lexical Analysis is Successful");
-        jTextArea1.setBorder(null);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtNotice.setEditable(false);
+        txtNotice.setBackground(getPrimaryColor());
+        txtNotice.setColumns(20);
+        txtNotice.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtNotice.setForeground(getTextPrimaryColor());
+        txtNotice.setLineWrap(true);
+        txtNotice.setRows(5);
+        txtNotice.setText("Please open a File to Proceed.");
+        txtNotice.setWrapStyleWord(true);
+        txtNotice.setBorder(null);
+        jScrollPane1.setViewportView(txtNotice);
 
         javax.swing.GroupLayout panelRound3Layout = new javax.swing.GroupLayout(panelRound3);
         panelRound3.setLayout(panelRound3Layout);
@@ -606,16 +608,7 @@ public class GUI extends javax.swing.JFrame {
         //scrPaneInput.getRowHeader().setBackground(Color.red);
         getContentPane().setBackground( primaryColor);
         
-        //Buttons
-        //Border emptyBorder = BorderFactory.createEmptyBorder(4, 4, 4, 4);
-        //btnSemantic.setBorder(emptyBorder);
-        //btnSemantic.setContentAreaFilled(false);
-        
-        //disable buttons
-        isCleanEnabled = BtnEnable(pnlButtonRemove,false);
-        isLexicalEnabled = BtnEnable(pnlLexical,false);
-        isSyntaxEnabled = BtnEnable(pnlSyntax,false);
-        isSemanticEnabled=BtnEnable(pnlSemantic,false);
+       CleanButton();
     }
     private void txtResultTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResultTitleActionPerformed
         // TODO add your handling code here:
@@ -637,6 +630,7 @@ public class GUI extends javax.swing.JFrame {
     private void pnlButtonRemoveMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonRemoveMousePressed
          if(!isCleanEnabled)return;
         CleanButton();
+        ClearData();
         //pnlButtonRemove.setBackground(buttonDisable);
     }//GEN-LAST:event_pnlButtonRemoveMousePressed
 
@@ -750,6 +744,8 @@ public class GUI extends javax.swing.JFrame {
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
         try {
+            ClearData();
+            txtTitle.setText(f.getName());
             Scanner scan = new Scanner(f);
             String txt = "";
             while (scan.hasNextLine()) {
@@ -759,29 +755,27 @@ public class GUI extends javax.swing.JFrame {
             }
             txtInput.setText(txt);
             inputManager = new InputManager(inputList);
-            //btnLexical.setEnabled(true);
-            //btnSyntax.setVisible(false);
-            //btnSemantic.setVisible(false);
             isCleanEnabled=BtnEnable(pnlButtonRemove,true);
             isLexicalEnabled = BtnEnable(pnlLexical,true);
+            SetNotice("File is Opened, You may proceed to Lexical Analysis");
         } catch (FileNotFoundException ex) {
-            SetResultTextView("File is not found");
-            //isCleanEnabled=BtnEnable(pnlButtonRemove,false);
+           
         }
     }
     
     void BtnLexical(){
         inputManager.LexicalAnalysis();
-        String output = "";
+        AddResult("---Lexical Analysis---\n");
         for(InputObject inputObj: inputManager.getInputObjectList()){
+            String output = "";
             for(String token: inputObj.getTokenList()){
                 output +=token+" ";
             }
-            output+="\n";
+            AddResult("> "+LineNumber(inputObj.getLineNumber())+output);
         }
-        SetResultTextView(output);
         isLexicalEnabled = BtnEnable(pnlLexical,false);
         isSyntaxEnabled = BtnEnable(pnlSyntax,true);
+        AddResult("\n---Lexical Analysis Completed---");
     }
     void BtnSyntax(){
         List<Boolean> syntaxList = inputManager.SyntaxAnalysis();
@@ -795,7 +789,7 @@ public class GUI extends javax.swing.JFrame {
             }
             txt+="Syntax is valid!!\n";
         }
-        SetResultTextView(txt);
+        AddResult(txt);
         //if(!isThereFalse)btnSemantic.setEnabled(true); 
         //btnSyntax.setVisible(false);
         //btnSemantic.setVisible(true);
@@ -813,15 +807,20 @@ public class GUI extends javax.swing.JFrame {
                 }
            txt+="Semantic is valid!!\n";  
         }
-        SetResultTextView(txt);
+        AddResult(txt);
         isSemanticEnabled = BtnEnable(pnlSemantic,false);
     }
         
     //Methods
-    void SetResultTextView(String text) {
-        txtResult.setText(txtResultDefined+ "\n"+ text);
+    void SetNotice(String text){
+        txtNotice.setText(text);
     }
-
+    void AddResult(String text) {
+        txtResult.setText(txtResult.getText()+ text+"\n");
+    }
+    String LineNumber(int num){
+        return "[Line "+ num +"] ";
+    }
     Color getPrimaryColor(){
         return primaryColor;
     }
@@ -840,11 +839,15 @@ public class GUI extends javax.swing.JFrame {
     Color getButtonColor(){
         return buttonColor;
     }
-    void CleanButton() {
+    void ClearData(){
+        txtTitle.setText("FileName");
         txtInput.setText("");
         txtResult.setText("");
         inputManager = null;
         inputList = new ArrayList();
+        SetNotice("Please Open a File to proceed.");
+    }
+    void CleanButton() {
         //btnLexical.setEnabled(false);
         //btnSyntax.setEnabled(false);
         //btnSemantic.setEnabled(false);
@@ -856,7 +859,6 @@ public class GUI extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -871,7 +873,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JPanel panelLeft;
     private javax.swing.JPanel panelMain;
     private javax.swing.JPanel panelRight;
@@ -887,7 +888,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane scrPaneInput;
     private javax.swing.JScrollPane scrPaneResult;
     private javax.swing.JTextArea txtInput;
+    private javax.swing.JTextArea txtNotice;
     private javax.swing.JTextArea txtResult;
     private javax.swing.JTextField txtResultTitle;
+    private javax.swing.JLabel txtTitle;
     // End of variables declaration//GEN-END:variables
 }
