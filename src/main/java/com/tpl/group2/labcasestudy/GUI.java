@@ -13,6 +13,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.border.Border;
@@ -333,7 +334,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
         );
         pnlButtonAddLayout.setVerticalGroup(
@@ -552,7 +553,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRound2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRound3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         panelRightLayout.setVerticalGroup(
             panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -776,6 +777,7 @@ public class GUI extends javax.swing.JFrame {
         isLexicalEnabled = BtnEnable(pnlLexical,false);
         isSyntaxEnabled = BtnEnable(pnlSyntax,true);
         AddResult("\n---Lexical Analysis Completed---");
+        SetNotice("Lexical Analysis completed, You may proceed to Syntax Analysis");
     }
     void BtnSyntax(){
         List<Boolean> syntaxList = inputManager.SyntaxAnalysis();
@@ -793,6 +795,8 @@ public class GUI extends javax.swing.JFrame {
         //if(!isThereFalse)btnSemantic.setEnabled(true); 
         //btnSyntax.setVisible(false);
         //btnSemantic.setVisible(true);
+        if(isThereFalse == true){SetNotice("Syntax Analysis failed, please clean document and try again.");}
+        else{SetNotice("Syntax Analysis completed, You may proceed to Semantic Analysis");}
         isSyntaxEnabled = BtnEnable(pnlSyntax,false);
         isSemanticEnabled = BtnEnable(pnlSemantic,true);
     }
@@ -803,11 +807,14 @@ public class GUI extends javax.swing.JFrame {
         for(boolean tf: semanticList){
              if (!tf) {
                 txt +="Semantic is not valid!!\n";
+                isThereFalse = true;
                 continue;
                 }
            txt+="Semantic is valid!!\n";  
         }
         AddResult(txt);
+        if(isThereFalse == true){SetNotice("Semantic Analysis failed, please clean document and try again.");}
+        else{SetNotice("Input has completed Lexical, Syntax, and Semantic Analysis. Input is valid");}
         isSemanticEnabled = BtnEnable(pnlSemantic,false);
     }
         
@@ -856,6 +863,7 @@ public class GUI extends javax.swing.JFrame {
         isSyntaxEnabled = BtnEnable(pnlSyntax,false);
         isSemanticEnabled=BtnEnable(pnlSemantic,false);
     }
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
