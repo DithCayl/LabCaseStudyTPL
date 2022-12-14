@@ -395,7 +395,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
+                .addGap(47, 47, 47))
         );
         pnlSyntaxLayout.setVerticalGroup(
             pnlSyntaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -436,7 +436,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
+                .addGap(36, 36, 36))
         );
         pnlSemanticLayout.setVerticalGroup(
             pnlSemanticLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -474,9 +474,9 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(pnlLexicalLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
+                .addGap(50, 50, 50))
         );
         pnlLexicalLayout.setVerticalGroup(
             pnlLexicalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -616,9 +616,23 @@ public class GUI extends javax.swing.JFrame {
     void InitializeButtonIcons(){
         String path = System.getProperty("user.dir") + "\\src\\main\\java\\materials";
         //Add icon
-        ImageIcon icon = new ImageIcon(path+"\\add_24.png");
-        labelOpenIcon.setIcon(icon);
-        labelOpenIcon.setDisabledIcon(icon);
+        ImageIcon iconAdd = new ImageIcon(path+"\\add_24.png");
+        ImageIcon iconClean = new ImageIcon(path + "\\remove.png");
+        ImageIcon iconLex = new ImageIcon(path + "\\lexical.png");
+        ImageIcon iconSyn = new ImageIcon(path + "\\syntax.png");
+        ImageIcon iconSem = new ImageIcon(path + "\\semantic.png");
+        labelOpenIcon.setIcon(iconAdd);
+        labelOpenIcon.setDisabledIcon(iconAdd);
+        jLabel4.setIcon(iconClean);
+        jLabel4.setDisabledIcon(iconClean);
+        jLabel10.setIcon(iconLex);
+        jLabel10.setDisabledIcon(iconLex);
+        jLabel6.setIcon(iconSyn);
+        jLabel6.setDisabledIcon(iconSyn);
+        jLabel8.setIcon(iconSem);
+        jLabel8.setDisabledIcon(iconSem);
+        jLabel8.setText("-");
+   
     }
     private void txtResultTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResultTitleActionPerformed
         // TODO add your handling code here:
@@ -823,7 +837,7 @@ public class GUI extends javax.swing.JFrame {
         }
         AddResult(txt);
         if(isThereFalse == true){SetNotice("Semantic Analysis failed, please clean document and try again.");}
-        else{SetNotice("Input has completed Lexical, Syntax, and Semantic Analysis. Input is valid");}
+        else{SetNotice("Input has completed Lexical, Syntax, and Semantic Analysis. Input is correct");}
         isSemanticEnabled = BtnEnable(pnlSemantic,false);
     }
         
