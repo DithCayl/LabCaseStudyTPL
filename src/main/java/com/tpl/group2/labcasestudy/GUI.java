@@ -833,6 +833,7 @@ public class GUI extends javax.swing.JFrame {
                 }
                 txt+= "Syntax is valid!!\n";
             }
+            //break;
              
             if(isThereFalse == true)
             {   
