@@ -364,6 +364,7 @@ public class GUI extends javax.swing.JFrame {
         panelRight.setBackground(getThirdColor());
 
         pnlSyntax.setBackground(getButtonColor());
+        pnlSyntax.setPreferredSize(new java.awt.Dimension(213, 52));
         pnlSyntax.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlSyntaxMouseClicked(evt);
@@ -385,6 +386,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel7.setForeground(getTextSecondaryColor());
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Syntax Analysis");
+        jLabel7.setPreferredSize(new java.awt.Dimension(92, 20));
 
         javax.swing.GroupLayout pnlSyntaxLayout = new javax.swing.GroupLayout(pnlSyntax);
         pnlSyntax.setLayout(pnlSyntaxLayout);
@@ -407,6 +409,7 @@ public class GUI extends javax.swing.JFrame {
         );
 
         pnlSemantic.setBackground(getButtonColor());
+        pnlSemantic.setPreferredSize(new java.awt.Dimension(213, 52));
         pnlSemantic.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlSemanticMouseClicked(evt);
@@ -421,11 +424,15 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setInheritsPopupMenu(false);
+        jLabel8.setMaximumSize(new java.awt.Dimension(3, 16));
+        jLabel8.setMinimumSize(new java.awt.Dimension(3, 16));
+        jLabel8.setPreferredSize(new java.awt.Dimension(3, 16));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setForeground(getTextSecondaryColor());
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Semantic Analysis");
+        jLabel9.setPreferredSize(new java.awt.Dimension(92, 20));
 
         javax.swing.GroupLayout pnlSemanticLayout = new javax.swing.GroupLayout(pnlSemantic);
         pnlSemantic.setLayout(pnlSemanticLayout);
@@ -440,9 +447,10 @@ public class GUI extends javax.swing.JFrame {
         );
         pnlSemanticLayout.setVerticalGroup(
             pnlSemanticLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlSemanticLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSemanticLayout.createSequentialGroup()
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
 
         pnlLexical.setBackground(getButtonColor());
@@ -545,8 +553,8 @@ public class GUI extends javax.swing.JFrame {
         panelRight.setLayout(panelRightLayout);
         panelRightLayout.setHorizontalGroup(
             panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlSemantic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlSyntax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlSemantic, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+            .addComponent(pnlSyntax, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
             .addComponent(pnlLexical, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelRightLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
@@ -564,11 +572,11 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(panelRound3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(pnlLexical, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlSyntax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlSemantic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
+                .addGap(58, 58, 58))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -668,11 +676,6 @@ public class GUI extends javax.swing.JFrame {
         BtnSyntax();
     }//GEN-LAST:event_pnlSyntaxMouseClicked
 
-    private void pnlSemanticMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSemanticMouseClicked
-        if(!isSemanticEnabled)return;
-        BtnSemantic();
-    }//GEN-LAST:event_pnlSemanticMouseClicked
-
     private void pnlButtonRemoveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlButtonRemoveMouseEntered
         ButtonHover(pnlButtonRemove, isCleanEnabled);
     }//GEN-LAST:event_pnlButtonRemoveMouseEntered
@@ -697,13 +700,18 @@ public class GUI extends javax.swing.JFrame {
         ButtonHoverExit(pnlSyntax, isSyntaxEnabled);
     }//GEN-LAST:event_pnlSyntaxMouseExited
 
-    private void pnlSemanticMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSemanticMouseEntered
-       ButtonHover(pnlSemantic, isSemanticEnabled);
-    }//GEN-LAST:event_pnlSemanticMouseEntered
-
     private void pnlSemanticMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSemanticMouseExited
         ButtonHoverExit(pnlSemantic, isSemanticEnabled);
     }//GEN-LAST:event_pnlSemanticMouseExited
+
+    private void pnlSemanticMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSemanticMouseEntered
+        ButtonHover(pnlSemantic, isSemanticEnabled);
+    }//GEN-LAST:event_pnlSemanticMouseEntered
+
+    private void pnlSemanticMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSemanticMouseClicked
+        if(!isSemanticEnabled)return;
+        BtnSemantic();
+    }//GEN-LAST:event_pnlSemanticMouseClicked
 
     /**
      * @param args the command line arguments
@@ -789,7 +797,9 @@ public class GUI extends javax.swing.JFrame {
     
     void BtnLexical(){
         inputManager.LexicalAnalysis();
-        AddResult("---Lexical Analysis---\n");
+        
+        AddResult("--- Lexical Analysis Initiated ---\n");
+        
         for(InputObject inputObj: inputManager.getInputObjectList()){
             String output = "";
             for(String token: inputObj.getTokenList()){
@@ -799,22 +809,45 @@ public class GUI extends javax.swing.JFrame {
         }
         isLexicalEnabled = BtnEnable(pnlLexical,false);
         isSyntaxEnabled = BtnEnable(pnlSyntax,true);
-        AddResult("\n---Lexical Analysis Completed---");
+        
+        AddResult("\n--- Lexical Analysis Successful ---\n");
+        AddResult("-----------------------------------------------------------------------"
+                + "-----------------------------------------------------------------------\n");
+        
         SetNotice("Lexical Analysis completed, You may proceed to Syntax Analysis");
     }
     void BtnSyntax(){
         List<Boolean> syntaxList = inputManager.SyntaxAnalysis();
         boolean isThereFalse = false;
         String txt ="";
-        for(boolean tf: syntaxList){
-            if (!tf) {
-             txt +="Syntax is not valid!!\n";
-             isThereFalse = true;
-             continue;
+        int i;
+        
+        AddResult("--- Syntax  Analysis Initiated ---\n");
+        
+            for (boolean tf: syntaxList){
+                if (!tf) {
+                
+                    txt+= "Syntax is not valid!!\n";
+                    isThereFalse = true;
+                    continue;
+                }
+                txt+= "Syntax is valid!!\n";
             }
-            txt+="Syntax is valid!!\n";
-        }
-        AddResult(txt);
+             
+            if(isThereFalse == true)
+            {   
+                AddResult(txt);
+                AddResult("--- Error Found---");
+                AddResult("--- Syntax  Analysis Failed ---\n");
+            }
+            else{
+                AddResult(txt);
+                AddResult("--- Syntax  Analysis Successful ---\n");
+            } 
+        
+        AddResult("-----------------------------------------------------------------------"
+                + "-----------------------------------------------------------------------\n");
+        
         //if(!isThereFalse)btnSemantic.setEnabled(true); 
         //btnSyntax.setVisible(false);
         //btnSemantic.setVisible(true);
@@ -827,15 +860,30 @@ public class GUI extends javax.swing.JFrame {
         List<Boolean> semanticList = inputManager.SemanticAnalysis();
         boolean isThereFalse = false;
         String txt="";
-        for(boolean tf: semanticList){
-             if (!tf) {
-                txt +="Semantic is not valid!!\n";
-                isThereFalse = true;
-                continue;
-                }
-           txt+="Semantic is valid!!\n";  
-        }
-        AddResult(txt);
+        
+        AddResult("--- Semantic  Analysis Initiated ---\n");
+        
+            for(boolean tf: semanticList){
+                if (!tf) {
+                    txt+= "Semantic is not valid!!\n";  
+                  
+                    isThereFalse = true;
+                    continue;
+                    }
+            txt+="Semantic is valid!!\n";  
+            }
+        
+         if(isThereFalse == true)
+            {
+                AddResult(txt);
+                AddResult("--- Error Found---");
+                AddResult("--- Semantic  Analysis Failed  ---\n");
+            }
+            else{    
+                AddResult(txt);
+                AddResult("--- Semantic  Analysis Successful ---\n");
+            }       
+        
         if(isThereFalse == true){SetNotice("Semantic Analysis failed, please clean document and try again.");}
         else{SetNotice("Input has completed Lexical, Syntax, and Semantic Analysis. Input is correct");}
         isSemanticEnabled = BtnEnable(pnlSemantic,false);
