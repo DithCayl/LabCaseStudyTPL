@@ -32,11 +32,6 @@ public class LexicalAnalyzer {
                 tokenList.add("<identifier>");
                 continue;
             }
-            if(IsValueType(lexeme)){
-                tokenList.add("<value>");
-                valueList.add(lexeme);
-                continue;
-            }
             if(lexeme.equals("=")){
                 tokenList.add("<assignment_operator>");
                 continue;
@@ -44,6 +39,11 @@ public class LexicalAnalyzer {
             if(IsArithmeticOp(lexeme)){
                 tokenList.add("<arithmetic_operator>");
                 arithOpList.add(lexeme);
+                continue;
+            }
+            if(IsValueType(lexeme)){
+                tokenList.add("<value>");
+                valueList.add(lexeme);
                 continue;
             }
             if(lexeme.equals(";")){

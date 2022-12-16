@@ -9,15 +9,10 @@ import java.awt.Component;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 import materials.TextLineNumber;
 /**
  *
@@ -26,9 +21,7 @@ import materials.TextLineNumber;
 public class GUI extends javax.swing.JFrame {
 
     //declared variables
-    String txtResultDefined = "Result: ";
     List<String> inputList = new ArrayList();
-
     InputManager inputManager;
     //Colors
     //rgba(10,25,47,255)
@@ -54,7 +47,6 @@ public class GUI extends javax.swing.JFrame {
     boolean isLexicalEnabled = true;
     boolean isSyntaxEnabled = true;
     boolean isSemanticEnabled = true;
-    //Fonts
     
     /**
      * Creates new form GUI
@@ -262,6 +254,7 @@ public class GUI extends javax.swing.JFrame {
         panelLeft.setBackground(getThirdColor());
 
         pnlButtonRemove.setBackground(getButtonColor());
+        pnlButtonRemove.setPreferredSize(new java.awt.Dimension(141, 52));
         pnlButtonRemove.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pnlButtonRemoveMouseEntered(evt);
@@ -277,11 +270,9 @@ public class GUI extends javax.swing.JFrame {
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText(" ");
-        jLabel4.setDisplayedMnemonicIndex(0);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setForeground(getTextSecondaryColor());
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Clean Document");
 
         javax.swing.GroupLayout pnlButtonRemoveLayout = new javax.swing.GroupLayout(pnlButtonRemove);
@@ -301,7 +292,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(pnlButtonRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pnlButtonAdd.setBackground(getButtonColor());
@@ -319,12 +310,10 @@ public class GUI extends javax.swing.JFrame {
 
         labelOpenIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelOpenIcon.setText(" ");
-        labelOpenIcon.setDisplayedMnemonicIndex(0);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(getTextSecondaryColor());
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Open Document");
+        jLabel3.setText("Open File");
 
         javax.swing.GroupLayout pnlButtonAddLayout = new javax.swing.GroupLayout(pnlButtonAdd);
         pnlButtonAdd.setLayout(pnlButtonAddLayout);
@@ -349,14 +338,14 @@ public class GUI extends javax.swing.JFrame {
         panelLeftLayout.setHorizontalGroup(
             panelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlButtonAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlButtonRemove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlButtonRemove, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
         );
         panelLeftLayout.setVerticalGroup(
             panelLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLeftLayout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addComponent(pnlButtonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addGap(3, 3, 3)
                 .addComponent(pnlButtonRemove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -380,11 +369,9 @@ public class GUI extends javax.swing.JFrame {
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText(" ");
-        jLabel6.setDisplayedMnemonicIndex(0);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setForeground(getTextSecondaryColor());
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Syntax Analysis");
         jLabel7.setPreferredSize(new java.awt.Dimension(92, 20));
 
@@ -393,11 +380,11 @@ public class GUI extends javax.swing.JFrame {
         pnlSyntaxLayout.setHorizontalGroup(
             pnlSyntaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSyntaxLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(47, 47, 47))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         pnlSyntaxLayout.setVerticalGroup(
             pnlSyntaxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -423,6 +410,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText(" ");
         jLabel8.setInheritsPopupMenu(false);
         jLabel8.setMaximumSize(new java.awt.Dimension(3, 16));
         jLabel8.setMinimumSize(new java.awt.Dimension(3, 16));
@@ -430,7 +418,6 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setForeground(getTextSecondaryColor());
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Semantic Analysis");
         jLabel9.setPreferredSize(new java.awt.Dimension(92, 20));
 
@@ -439,18 +426,18 @@ public class GUI extends javax.swing.JFrame {
         pnlSemanticLayout.setHorizontalGroup(
             pnlSemanticLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSemanticLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(36, 36, 36))
+                .addGap(12, 12, 12)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlSemanticLayout.setVerticalGroup(
             pnlSemanticLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSemanticLayout.createSequentialGroup()
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addGap(17, 17, 17))
         );
 
         pnlLexical.setBackground(getButtonColor());
@@ -467,12 +454,10 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText(" ");
-        jLabel10.setDisplayedMnemonicIndex(0);
+        jLabel10.setText("  ");
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setForeground(getTextSecondaryColor());
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Lexical Analysis");
 
         javax.swing.GroupLayout pnlLexicalLayout = new javax.swing.GroupLayout(pnlLexical);
@@ -480,11 +465,11 @@ public class GUI extends javax.swing.JFrame {
         pnlLexicalLayout.setHorizontalGroup(
             pnlLexicalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlLexicalLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(50, 50, 50))
+                .addGap(38, 38, 38)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
         pnlLexicalLayout.setVerticalGroup(
             pnlLexicalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -561,7 +546,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRound2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelRound3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelRightLayout.setVerticalGroup(
             panelRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -572,9 +557,9 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(panelRound3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(pnlLexical, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
                 .addComponent(pnlSyntax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
                 .addComponent(pnlSemantic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
         );
@@ -616,7 +601,6 @@ public class GUI extends javax.swing.JFrame {
         tln.setDigitAlignment(CENTER_ALIGNMENT);
         tln.setCurrentLineForeground(textSecondaryColor);
         scrPaneInput.setRowHeaderView(tln);
-        //scrPaneInput.getRowHeader().setBackground(Color.red);
         getContentPane().setBackground( primaryColor);
         
        CleanButton();
@@ -639,7 +623,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel6.setDisabledIcon(iconSyn);
         jLabel8.setIcon(iconSem);
         jLabel8.setDisabledIcon(iconSem);
-        jLabel8.setText("-");
    
     }
     private void txtResultTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResultTitleActionPerformed
@@ -789,7 +772,7 @@ public class GUI extends javax.swing.JFrame {
             inputManager = new InputManager(inputList);
             isCleanEnabled=BtnEnable(pnlButtonRemove,true);
             isLexicalEnabled = BtnEnable(pnlLexical,true);
-            SetNotice("File is Opened, You may proceed to Lexical Analysis");
+            SetNotice("The File is loaded.\nYou may proceed to Lexical Analysis.");
         } catch (FileNotFoundException ex) {
            
         }
@@ -814,36 +797,31 @@ public class GUI extends javax.swing.JFrame {
         AddResult("-----------------------------------------------------------------------"
                 + "-----------------------------------------------------------------------\n");
         
-        SetNotice("Lexical Analysis completed, You may proceed to Syntax Analysis");
+        SetNotice("Lexical Analysis completed.\nYou may proceed to Syntax Analysis.");
     }
     void BtnSyntax(){
-        List<Boolean> syntaxList = inputManager.SyntaxAnalysis();
+        inputManager.SyntaxAnalysis();
         boolean isThereFalse = false;
-        String txt ="";
-        int i;
         
         AddResult("--- Syntax  Analysis Initiated ---\n");
         
-            for (boolean tf: syntaxList){
-                if (!tf) {
-                
-                    txt+= "Syntax is not valid!!\n";
+            for (InputObject input: inputManager.getInputObjectList()){
+                if (!input.IsSyntaxValid()) {
+                    AddResult("> "+LineNumber(input.getLineNumber())+"Syntax is not valid");
                     isThereFalse = true;
                     continue;
                 }
-                txt+= "Syntax is valid!!\n";
+                AddResult("> "+LineNumber(input.getLineNumber())+"Syntax is valid");
             }
             //break;
              
             if(isThereFalse == true)
             {   
-                AddResult(txt);
-                AddResult("--- Error Found---");
+                AddResult("\n--- Error Found---");
                 AddResult("--- Syntax  Analysis Failed ---\n");
             }
             else{
-                AddResult(txt);
-                AddResult("--- Syntax  Analysis Successful ---\n");
+                AddResult("\n--- Syntax  Analysis Successful ---\n");
             } 
         
         AddResult("-----------------------------------------------------------------------"
@@ -852,41 +830,44 @@ public class GUI extends javax.swing.JFrame {
         //if(!isThereFalse)btnSemantic.setEnabled(true); 
         //btnSyntax.setVisible(false);
         //btnSemantic.setVisible(true);
-        if(isThereFalse == true){SetNotice("Syntax Analysis failed, please clean document and try again.");}
-        else{SetNotice("Syntax Analysis completed, You may proceed to Semantic Analysis");}
+        if(isThereFalse == true){SetNotice("Syntax Analysis failed.\nPlease clean the compiler and try another file. ");}
+        else{
+            SetNotice("Syntax Analysis completed. You may proceed to Semantic Analysis.");
+            isSemanticEnabled = BtnEnable(pnlSemantic,true);
+        }
         isSyntaxEnabled = BtnEnable(pnlSyntax,false);
-        isSemanticEnabled = BtnEnable(pnlSemantic,true);
+        
     }
     void BtnSemantic(){
-        List<Boolean> semanticList = inputManager.SemanticAnalysis();
+        inputManager.SemanticAnalysis();
         boolean isThereFalse = false;
-        String txt="";
         
         AddResult("--- Semantic  Analysis Initiated ---\n");
         
-            for(boolean tf: semanticList){
-                if (!tf) {
-                    txt+= "Semantic is not valid!!\n";  
-                  
+            for(InputObject input: inputManager.getInputObjectList()){
+                if (!input.IsSemanticValid()) {
+                    AddResult("> "+LineNumber(input.getLineNumber())+"Semantically not valid");
                     isThereFalse = true;
                     continue;
                     }
-            txt+="Semantic is valid!!\n";  
+                AddResult("> "+LineNumber(input.getLineNumber())+"Semantically valid");
             }
         
          if(isThereFalse == true)
             {
-                AddResult(txt);
-                AddResult("--- Error Found---");
+                AddResult("\n--- Error Found---");
                 AddResult("--- Semantic  Analysis Failed  ---\n");
             }
             else{    
-                AddResult(txt);
-                AddResult("--- Semantic  Analysis Successful ---\n");
+                AddResult("\n--- Semantic  Analysis Successful ---\n");
             }       
         
-        if(isThereFalse == true){SetNotice("Semantic Analysis failed, please clean document and try again.");}
-        else{SetNotice("Input has completed Lexical, Syntax, and Semantic Analysis. Input is correct");}
+        if(isThereFalse == true){
+            SetNotice("Semantic Analysis failed.\nPlease clean the compiler and try another file.");
+        }
+        else{
+            SetNotice("The File has completed Lexical, Syntax, and Semantic Analysis. The File is valid.");
+        }
         isSemanticEnabled = BtnEnable(pnlSemantic,false);
     }
         
@@ -924,7 +905,7 @@ public class GUI extends javax.swing.JFrame {
         txtResult.setText("");
         inputManager = null;
         inputList = new ArrayList();
-        SetNotice("Please Open a File to proceed.");
+        SetNotice("Please open a File to proceed to analysis.");
     }
     void CleanButton() {
         //btnLexical.setEnabled(false);

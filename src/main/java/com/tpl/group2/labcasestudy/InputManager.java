@@ -50,25 +50,21 @@ public class InputManager {
         boolean isSyntaxEqual =  new SyntaxAnalyzer().IsPatternEqual(tokenList);
         return isSyntaxEqual;
     }*/
-    public List<Boolean> SyntaxAnalysis(){
-        List<Boolean> syntaxList = new ArrayList<Boolean>();
+    public void SyntaxAnalysis(){
         for(InputObject input: inputObjectList){
             boolean isSyntaxEqual =  new SyntaxAnalyzer().IsPatternEqual(input.getTokenList());
-            syntaxList.add(isSyntaxEqual);
+            input.setIsSyntaxValid(isSyntaxEqual);
         }
-        return syntaxList;
     }
     /*public boolean SemanticAnalysis(){
         boolean isSemanticValid = new SemanticAnalyzer().IsTypeMatched(dataString,valueList);
         return isSemanticValid;
     }*/
-    public List<Boolean> SemanticAnalysis(){
-        List<Boolean> semanticList = new ArrayList();
+    public void SemanticAnalysis(){
         for(InputObject input: inputObjectList){
             boolean isSemanticValid = new SemanticAnalyzer().IsTypeMatched(input);
-            semanticList.add(isSemanticValid);
+            input.setIsSemanticValid(isSemanticValid);
         }
-        return semanticList;
     }
     public List<InputObject> getInputObjectList() {
         return inputObjectList;

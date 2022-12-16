@@ -19,6 +19,9 @@ public class InputObject {
     
     String dataString;
     List<String> valueList = new ArrayList();
+    
+    boolean isSyntaxValid = false;
+    boolean isSemanticValid = false;
 
     int lineNumber;
     public String getDataString() {
@@ -45,6 +48,23 @@ public class InputObject {
     public void setTokenList(List<String> tokenList) {
         this.tokenList = tokenList;
     }
+
+    public boolean IsSyntaxValid() {
+        return isSyntaxValid;
+    }
+
+    public void setIsSyntaxValid(boolean isSyntaxValid) {
+        this.isSyntaxValid = isSyntaxValid;
+    }
+
+    public boolean IsSemanticValid() {
+        return isSemanticValid;
+    }
+
+    public void setIsSemanticValid(boolean isSemanticValid) {
+        this.isSemanticValid = isSemanticValid;
+    }
+    
     
     public InputObject(String input, List<String> sortedInput, int lineNumber) {
         this.input = input;
